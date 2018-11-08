@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储) | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="RAID(独立磁盘 _冗余_ 阵列)RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.  常用的RAID技术   HDFS(分布式文件系统)通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.  HDFS架构">
+<meta name="keywords" content="hdfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储)">
+<meta property="og:url" content="http://yoursite.com/2018/11/08/RAID与HDFS/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="RAID(独立磁盘 _冗余_ 阵列)RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.  常用的RAID技术   HDFS(分布式文件系统)通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.  HDFS架构">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx0e0cn555j30zk0k0wft.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:17:16.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储)">
+<meta name="twitter:description" content="RAID(独立磁盘 _冗余_ 阵列)RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.  常用的RAID技术   HDFS(分布式文件系统)通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.  HDFS架构">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Programer / Coder
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-RAID与HDFS" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储)
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="RAID-独立磁盘-冗余-阵列"><a href="#RAID-独立磁盘-冗余-阵列" class="headerlink" title="RAID(独立磁盘 _冗余_ 阵列)"></a>RAID(独立磁盘 _冗余_ 阵列)</h3><pre><code>RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.
+</code></pre><ul>
+<li>常用的RAID技术</li>
+</ul>
+<p><img src="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg" alt="raid.png"></p>
+<h3 id="HDFS-分布式文件系统"><a href="#HDFS-分布式文件系统" class="headerlink" title="HDFS(分布式文件系统)"></a>HDFS(分布式文件系统)</h3><pre><code>通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.
+</code></pre><ul>
+<li>HDFS架构</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx0e0cn555j30zk0k0wft.jpg" alt="HDFS.png"></p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-08T01:00:00.000Z" itemprop="datePublished">2018-11-08</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/hdfs/">hdfs</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2018/11/08/array/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    最基础的数据结构-数组
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/07/Scala/" class="ui tiny button">
+                    
+                    Scala
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#RAID-独立磁盘-冗余-阵列"><span>RAID(独立磁盘 _冗余_ 阵列)</span></a></li><li><a href="#HDFS-分布式文件系统"><span>HDFS(分布式文件系统)</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>

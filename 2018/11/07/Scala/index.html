@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>Scala | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="Scala函数和闭包方法定义函数最通用的方法是作为某个对象的成员.这种函数被称为方法(Method). 12345678910111213141516import scala.io.Sourceobject LongLines&amp;#123;    def processFile(filename:String,witdh:Int)&amp;#123;        val source=Source.fro">
+<meta name="keywords" content="函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scala">
+<meta property="og:url" content="http://yoursite.com/2018/11/07/Scala/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="Scala函数和闭包方法定义函数最通用的方法是作为某个对象的成员.这种函数被称为方法(Method). 12345678910111213141516import scala.io.Sourceobject LongLines&amp;#123;    def processFile(filename:String,witdh:Int)&amp;#123;        val source=Source.fro">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-07T14:13:23.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala">
+<meta name="twitter:description" content="Scala函数和闭包方法定义函数最通用的方法是作为某个对象的成员.这种函数被称为方法(Method). 12345678910111213141516import scala.io.Sourceobject LongLines&amp;#123;    def processFile(filename:String,witdh:Int)&amp;#123;        val source=Source.fro">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Programer / Coder
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-Scala" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Scala
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="Scala函数和闭包"><a href="#Scala函数和闭包" class="headerlink" title="Scala函数和闭包"></a>Scala函数和闭包</h3><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><pre><code>定义函数最通用的方法是作为某个对象的成员.这种函数被称为方法(Method).
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import scala.io.Source</span><br><span class="line">object LongLines&#123;</span><br><span class="line">    def processFile(filename:String,witdh:Int)&#123;</span><br><span class="line">        val source=Source.fromFile(filename)</span><br><span class="line">        for(line &lt;- source.getLines)&#123;</span><br><span class="line">            processLine(filename,width,line)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //</span><br><span class="line">    private def processLine(filename:String,width:Int,line:String)&#123;</span><br><span class="line">        if(line.length&gt;width)&#123;</span><br><span class="line">            println(filename+&quot;:&quot;+line.trim)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="本地函数"><a href="#本地函数" class="headerlink" title="本地函数"></a>本地函数</h5><pre><code>Scala提供一种方式,可以把函数定义在别的函数之内.
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def processFile(filename:String,width:Int)&#123;</span><br><span class="line">    //函数的嵌套</span><br><span class="line">    def processLine(filename:String,width:Int,line:String)&#123;</span><br><span class="line">        if(line.length&gt;width)</span><br><span class="line">            print(filename+&quot;:&quot;+line)</span><br><span class="line">    &#125;</span><br><span class="line">    val source =Source.fromFile(filename)&#123;</span><br><span class="line">        for(line &lt;- source.getLines&gt;)&#123;</span><br><span class="line">            processLine(filename,width,line)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Scala中的函数"><a href="#Scala中的函数" class="headerlink" title="Scala中的函数"></a>Scala中的函数</h5><pre><code>不仅可以定义和调用函数,还可以写成匿名的字面量(literal),并把他们作为值传递.
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var increase=(x:Int)=&gt; x+1   //     increase(int x)</span><br><span class="line">increase(10)                //11</span><br><span class="line">increase(11)                //12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">val someNumbers=List(-11,-10,-5,0,5,10)</span><br><span class="line"></span><br><span class="line">someNumbers.foreach((x:Int) =&gt; println(x))</span><br><span class="line">someNumbers.foreach((x:Int)=&gt; x&gt;0)</span><br></pre></td></tr></table></figure>
+<h5 id="占位符用法"><a href="#占位符用法" class="headerlink" title="占位符用法"></a>占位符用法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">someNumbers.foreach(println(_))</span><br><span class="line">someNumbers.filter(_ &gt; 0)</span><br></pre></td></tr></table></figure>
+<h5 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val addMore=(x:Int) =&gt; x + more  //编译不通过  more未定义</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var more=1</span><br><span class="line">val addMore=(x:Int) =&gt; x + more  //如果more变化,则函数也随之变化</span><br></pre></td></tr></table></figure>
+<h5 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def echo(args:String*)&#123;     //Java中 void echo(String... args)</span><br><span class="line">    for(arg &lt;- args&gt;)&#123;</span><br><span class="line">        println(arg)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-07T13:30:00.000Z" itemprop="datePublished">2018-11-07</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/函数式编程/">函数式编程</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2018/11/08/RAID与HDFS/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储)
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/07/Storm 概念 组件 编程模型/" class="ui tiny button">
+                    
+                    Storm
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#Scala函数和闭包"><span>Scala函数和闭包</span></a><ol><li><a href="#方法"><span>方法</span></a></li><li><a href="#本地函数"><span>本地函数</span></a></li><li><a href="#Scala中的函数"><span>Scala中的函数</span></a></li><li><a href="#占位符用法"><span>占位符用法</span></a></li><li><a href="#闭包-closure"><span>闭包(closure)</span></a></li><li><a href="#可变参数"><span>可变参数</span></a></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>Storm | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="OLTP(on-line transaction processing)联机事务处理(传统关系数据库)  OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大  Storm是由什么语言编写的? 核心逻辑是Clojure,其他还有Python,Java. Clojure是一种运行在JVM上的Lisp(函数式编程)方言  Storm用来实时">
+<meta name="keywords" content="storm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storm">
+<meta property="og:url" content="http://yoursite.com/2018/11/07/Storm 概念 组件 编程模型/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="OLTP(on-line transaction processing)联机事务处理(传统关系数据库)  OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大  Storm是由什么语言编写的? 核心逻辑是Clojure,其他还有Python,Java. Clojure是一种运行在JVM上的Lisp(函数式编程)方言  Storm用来实时">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fwyckegszhj30v20ho41h.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fwycmq4l5tj30xe0pin3r.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqzo7akj30w80nq42j.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqulsrnj30wz051q4v.jpg">
+<meta property="og:updated_time" content="2018-11-08T03:35:15.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storm">
+<meta name="twitter:description" content="OLTP(on-line transaction processing)联机事务处理(传统关系数据库)  OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大  Storm是由什么语言编写的? 核心逻辑是Clojure,其他还有Python,Java. Clojure是一种运行在JVM上的Lisp(函数式编程)方言  Storm用来实时">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Programer / Coder
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-Storm 概念 组件 编程模型" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Storm
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <ul>
+<li>OLTP(on-line transaction processing)联机事务处理(传统关系数据库) </li>
+<li>OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大</li>
+</ul>
+<h4 id="Storm是由什么语言编写的"><a href="#Storm是由什么语言编写的" class="headerlink" title="Storm是由什么语言编写的?"></a>Storm是由什么语言编写的?</h4><ul>
+<li>核心逻辑是Clojure,其他还有Python,Java.</li>
+<li>Clojure是一种运行在JVM上的Lisp(函数式编程)方言</li>
+</ul>
+<h4 id="Storm用来实时处理数据"><a href="#Storm用来实时处理数据" class="headerlink" title="Storm用来实时处理数据"></a>Storm用来实时处理数据</h4><ul>
+<li>低延迟 高可用 分布式 可扩展  分区容错(数据不丢失)</li>
+</ul>
+<ol>
+<li><p>Flume实时采集   低延迟</p>
+</li>
+<li><p>Kafka消息队列   低延迟</p>
+</li>
+<li><p>Storm实时计算   低延迟 </p>
+</li>
+<li><p>Redis实时存储   低延迟</p>
+</li>
+</ol>
+<h4 id="Storm与Hadoop的区别"><a href="#Storm与Hadoop的区别" class="headerlink" title="Storm与Hadoop的区别"></a>Storm与Hadoop的区别</h4><ul>
+<li>Storm用于实时计算,Hadoop用于离线计算.</li>
+<li>Storm处理的数据保存在内存中,源源不断;Hadoop处理的数据在磁盘(文件系统),一批一批.</li>
+<li>Storm的数据通过网络传输进来;Hadoop的数据保存在磁盘(文件系统).</li>
+<li>Storm与Hadoop <strong>编程模型</strong> 类似.</li>
+</ul>
+<p>编程模型:</p>
+<p><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg" alt="storm.png"></p>
+<ol>
+<li><p>Nimbus      灵气,(神头上的)光轮</p>
+</li>
+<li><p>Supervisor  监督人</p>
+</li>
+<li><p>Topology    拓扑</p>
+</li>
+<li><p>Spout       喷口,喷出                        (任务类型  Spout)</p>
+</li>
+<li><p>Bolt       突然的,筛选,突然说出,脱口说出       (任务类型  Bolt)</p>
+</li>
+</ol>
+<p>#</p>
+<h4 id="Storm应用场景及行业案例"><a href="#Storm应用场景及行业案例" class="headerlink" title="Storm应用场景及行业案例"></a>Storm应用场景及行业案例</h4><p>Storm用来实时计算源源不断产生的数据,如同流水线生产.</p>
+<h5 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h5><ul>
+<li><p>日志分析</p>
+<p>  从海量日志中分析出特定数据,将分析的结果存入数据库</p>
+</li>
+<li><p>管道系统</p>
+<p>  将一个数据从一个系统传输到另外一个系统,如将数据库同步到Hadoop</p>
+</li>
+<li><p>消息转换器</p>
+<p>  将接受到的消息按照某种格式进行转化,存储到另外一个系统如消息中间件</p>
+</li>
+</ul>
+<h5 id="典型案例"><a href="#典型案例" class="headerlink" title="典型案例"></a>典型案例</h5><p><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fwyckegszhj30v20ho41h.jpg" alt=""></p>
+<h4 id="Storm核心组件"><a href="#Storm核心组件" class="headerlink" title="Storm核心组件"></a>Storm核心组件</h4><p><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fwycmq4l5tj30xe0pin3r.jpg" alt=""></p>
+<ul>
+<li>nimbus只有一个,supervisor有多个,一个supervisor可以有多个worker.</li>
+<li>nimbus通过zookeeper与supervisor交互</li>
+</ul>
+<h4 id="Storm编程模型"><a href="#Storm编程模型" class="headerlink" title="Storm编程模型"></a>Storm编程模型</h4><p><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqzo7akj30w80nq42j.jpg" alt="Storm编程模型.png"></p>
+<h4 id="流式计算一般架构图"><a href="#流式计算一般架构图" class="headerlink" title="流式计算一般架构图"></a>流式计算一般架构图</h4><p><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqulsrnj30wz051q4v.jpg" alt="流式计算架构图.png"></p>
+<ul>
+<li>flume用来获取数据(可用于日志收集)</li>
+<li>Kafka用来临时保存数据(消息队列)</li>
+<li>Storm用来计算数据(实时计算)</li>
+<li>Redis用来保存数据(内存数据库) 持久化</li>
+</ul>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-07T10:09:59.000Z" itemprop="datePublished">2018-11-07</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/storm/">storm</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2018/11/07/Scala/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    Scala
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/07/helloblog/" class="ui tiny button">
+                    
+                    从现在开始,写博客,越努力,越幸运!
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#Storm是由什么语言编写的"><span>Storm是由什么语言编写的?</span></a></li><li><a href="#Storm用来实时处理数据"><span>Storm用来实时处理数据</span></a></li><li><a href="#Storm与Hadoop的区别"><span>Storm与Hadoop的区别</span></a></li><li><a href="#Storm应用场景及行业案例"><span>Storm应用场景及行业案例</span></a><ol><li><a href="#应用场景"><span>应用场景</span></a></li><li><a href="#典型案例"><span>典型案例</span></a></li></ol></li><li><a href="#Storm核心组件"><span>Storm核心组件</span></a></li><li><a href="#Storm编程模型"><span>Storm编程模型</span></a></li><li><a href="#流式计算一般架构图"><span>流式计算一般架构图</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
