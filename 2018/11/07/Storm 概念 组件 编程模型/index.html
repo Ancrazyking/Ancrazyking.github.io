@@ -6,26 +6,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name="description" content="">
-    <title>Storm | Afeng&#39;s Blogs</title>
+    <title>Storm 概念 组件 与编程模型 | Afeng&#39;s Blogs</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="OLTP(on-line transaction processing)联机事务处理(传统关系数据库)  OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大  Storm是由什么语言编写的? 核心逻辑是Clojure,其他还有Python,Java. Clojure是一种运行在JVM上的Lisp(函数式编程)方言  Storm用来实时">
+    <meta name="description" content="OLTP(on-line transaction processing)&amp;#x8054;&amp;#x673A;&amp;#x4E8B;&amp;#x52A1;&amp;#x5904;&amp;#x7406;(&amp;#x4F20;&amp;#x7EDF;&amp;#x5173;&amp;#x7CFB;&amp;#x6570;&amp;#x636E;&amp;#x5E93;)  OLAP(on-line analytical  processing)&amp;#x8054;&amp;#x673A;&amp;#x">
 <meta name="keywords" content="storm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Storm">
+<meta property="og:title" content="Storm 概念 组件 与编程模型">
 <meta property="og:url" content="http://yoursite.com/2018/11/07/Storm 概念 组件 编程模型/index.html">
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
-<meta property="og:description" content="OLTP(on-line transaction processing)联机事务处理(传统关系数据库)  OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大  Storm是由什么语言编写的? 核心逻辑是Clojure,其他还有Python,Java. Clojure是一种运行在JVM上的Lisp(函数式编程)方言  Storm用来实时">
+<meta property="og:description" content="OLTP(on-line transaction processing)&amp;#x8054;&amp;#x673A;&amp;#x4E8B;&amp;#x52A1;&amp;#x5904;&amp;#x7406;(&amp;#x4F20;&amp;#x7EDF;&amp;#x5173;&amp;#x7CFB;&amp;#x6570;&amp;#x636E;&amp;#x5E93;)  OLAP(on-line analytical  processing)&amp;#x8054;&amp;#x673A;&amp;#x">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fwyckegszhj30v20ho41h.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fwycmq4l5tj30xe0pin3r.jpg">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqzo7akj30w80nq42j.jpg">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqulsrnj30wz051q4v.jpg">
-<meta property="og:updated_time" content="2018-11-08T03:35:15.719Z">
+<meta property="og:updated_time" content="2018-11-08T08:56:52.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Storm">
-<meta name="twitter:description" content="OLTP(on-line transaction processing)联机事务处理(传统关系数据库)  OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大  Storm是由什么语言编写的? 核心逻辑是Clojure,其他还有Python,Java. Clojure是一种运行在JVM上的Lisp(函数式编程)方言  Storm用来实时">
+<meta name="twitter:title" content="Storm 概念 组件 与编程模型">
+<meta name="twitter:description" content="OLTP(on-line transaction processing)&amp;#x8054;&amp;#x673A;&amp;#x4E8B;&amp;#x52A1;&amp;#x5904;&amp;#x7406;(&amp;#x4F20;&amp;#x7EDF;&amp;#x5173;&amp;#x7CFB;&amp;#x6570;&amp;#x636E;&amp;#x5E93;)  OLAP(on-line analytical  processing)&amp;#x8054;&amp;#x673A;&amp;#x">
 <meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg">
 
     <script type="application/ld+json">
@@ -86,7 +86,7 @@
                     <a class="header">afenga</a>
                     
                         <div class="meta">
-                            Programer / Coder
+                            Student/ Programer / Coder
                         </div>
                     
                 </div>
@@ -107,6 +107,14 @@
                         
 
                                 <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
 
                             
                     </div>
@@ -152,7 +160,7 @@
 
 <h1 class="ui header">
     
-    Storm
+    Storm 概念 组件 与编程模型
 </h1>
 
 
@@ -161,74 +169,117 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        <ul>
-<li>OLTP(on-line transaction processing)联机事务处理(传统关系数据库) </li>
-<li>OLAP(on-line analytical  processing)联机分析处理(数据仓库系统) 数据量较大</li>
+                        <ul class="ui list">
+<li>OLTP(on-line transaction processing)&#x8054;&#x673A;&#x4E8B;&#x52A1;&#x5904;&#x7406;(&#x4F20;&#x7EDF;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;) </li>
+<li>OLAP(on-line analytical  processing)&#x8054;&#x673A;&#x5206;&#x6790;&#x5904;&#x7406;(&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7CFB;&#x7EDF;) &#x6570;&#x636E;&#x91CF;&#x8F83;&#x5927;</li>
 </ul>
-<h4 id="Storm是由什么语言编写的"><a href="#Storm是由什么语言编写的" class="headerlink" title="Storm是由什么语言编写的?"></a>Storm是由什么语言编写的?</h4><ul>
-<li>核心逻辑是Clojure,其他还有Python,Java.</li>
-<li>Clojure是一种运行在JVM上的Lisp(函数式编程)方言</li>
+<h4 id="Storm&#x662F;&#x7531;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;"><a href="#Storm&#x662F;&#x7531;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;" class="headerlink" title="Storm&#x662F;&#x7531;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;?"></a>Storm&#x662F;&#x7531;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;?</h4><ul class="ui list">
+<li>&#x6838;&#x5FC3;&#x903B;&#x8F91;&#x662F;Clojure,&#x5176;&#x4ED6;&#x8FD8;&#x6709;Python,Java.</li>
+<li>Clojure&#x662F;&#x4E00;&#x79CD;&#x8FD0;&#x884C;&#x5728;JVM&#x4E0A;&#x7684;Lisp(&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;)&#x65B9;&#x8A00;</li>
 </ul>
-<h4 id="Storm用来实时处理数据"><a href="#Storm用来实时处理数据" class="headerlink" title="Storm用来实时处理数据"></a>Storm用来实时处理数据</h4><ul>
-<li>低延迟 高可用 分布式 可扩展  分区容错(数据不丢失)</li>
+<h4 id="Storm&#x7528;&#x6765;&#x5B9E;&#x65F6;&#x5904;&#x7406;&#x6570;&#x636E;"><a href="#Storm&#x7528;&#x6765;&#x5B9E;&#x65F6;&#x5904;&#x7406;&#x6570;&#x636E;" class="headerlink" title="Storm&#x7528;&#x6765;&#x5B9E;&#x65F6;&#x5904;&#x7406;&#x6570;&#x636E;"></a>Storm&#x7528;&#x6765;&#x5B9E;&#x65F6;&#x5904;&#x7406;&#x6570;&#x636E;</h4><ul class="ui list">
+<li>&#x4F4E;&#x5EF6;&#x8FDF; &#x9AD8;&#x53EF;&#x7528; &#x5206;&#x5E03;&#x5F0F; &#x53EF;&#x6269;&#x5C55;  &#x5206;&#x533A;&#x5BB9;&#x9519;(&#x6570;&#x636E;&#x4E0D;&#x4E22;&#x5931;)</li>
 </ul>
-<ol>
-<li><p>Flume实时采集   低延迟</p>
+<ol class="ui list">
+<li><p>Flume&#x5B9E;&#x65F6;&#x91C7;&#x96C6;   &#x4F4E;&#x5EF6;&#x8FDF;</p>
 </li>
-<li><p>Kafka消息队列   低延迟</p>
+<li><p>Kafka&#x6D88;&#x606F;&#x961F;&#x5217;   &#x4F4E;&#x5EF6;&#x8FDF;</p>
 </li>
-<li><p>Storm实时计算   低延迟 </p>
+<li><p>Storm&#x5B9E;&#x65F6;&#x8BA1;&#x7B97;   &#x4F4E;&#x5EF6;&#x8FDF; </p>
 </li>
-<li><p>Redis实时存储   低延迟</p>
+<li><p>Redis&#x5B9E;&#x65F6;&#x5B58;&#x50A8;   &#x4F4E;&#x5EF6;&#x8FDF;</p>
 </li>
 </ol>
-<h4 id="Storm与Hadoop的区别"><a href="#Storm与Hadoop的区别" class="headerlink" title="Storm与Hadoop的区别"></a>Storm与Hadoop的区别</h4><ul>
-<li>Storm用于实时计算,Hadoop用于离线计算.</li>
-<li>Storm处理的数据保存在内存中,源源不断;Hadoop处理的数据在磁盘(文件系统),一批一批.</li>
-<li>Storm的数据通过网络传输进来;Hadoop的数据保存在磁盘(文件系统).</li>
-<li>Storm与Hadoop <strong>编程模型</strong> 类似.</li>
+<h4 id="Storm&#x4E0E;Hadoop&#x7684;&#x533A;&#x522B;"><a href="#Storm&#x4E0E;Hadoop&#x7684;&#x533A;&#x522B;" class="headerlink" title="Storm&#x4E0E;Hadoop&#x7684;&#x533A;&#x522B;"></a>Storm&#x4E0E;Hadoop&#x7684;&#x533A;&#x522B;</h4><ul class="ui list">
+<li>Storm&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x8BA1;&#x7B97;,Hadoop&#x7528;&#x4E8E;&#x79BB;&#x7EBF;&#x8BA1;&#x7B97;.</li>
+<li>Storm&#x5904;&#x7406;&#x7684;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;,&#x6E90;&#x6E90;&#x4E0D;&#x65AD;;Hadoop&#x5904;&#x7406;&#x7684;&#x6570;&#x636E;&#x5728;&#x78C1;&#x76D8;(&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;),&#x4E00;&#x6279;&#x4E00;&#x6279;.</li>
+<li>Storm&#x7684;&#x6570;&#x636E;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x8FDB;&#x6765;;Hadoop&#x7684;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x5728;&#x78C1;&#x76D8;(&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;).</li>
+<li>Storm&#x4E0E;Hadoop <strong>&#x7F16;&#x7A0B;&#x6A21;&#x578B;</strong> &#x7C7B;&#x4F3C;.</li>
 </ul>
-<p>编程模型:</p>
-<p><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg" alt="storm.png"></p>
-<ol>
-<li><p>Nimbus      灵气,(神头上的)光轮</p>
+<p>&#x7F16;&#x7A0B;&#x6A21;&#x578B;:</p>
+<p><a class="magnific-img" href="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg"><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwyc9nxqyxj30by08175j.jpg" alt="storm.png" class="ui centered image"></a></p>
+<ol class="ui list">
+<li><p>Nimbus      &#x7075;&#x6C14;,(&#x795E;&#x5934;&#x4E0A;&#x7684;)&#x5149;&#x8F6E;   &#x4E3B;&#x8282;&#x70B9;</p>
 </li>
-<li><p>Supervisor  监督人</p>
+<li><p>Supervisor  &#x76D1;&#x7763;&#x4EBA;               &#x4ECE;&#x8282;&#x70B9;</p>
 </li>
-<li><p>Topology    拓扑</p>
+<li><p>Topology    &#x62D3;&#x6251;</p>
 </li>
-<li><p>Spout       喷口,喷出                        (任务类型  Spout)</p>
+<li><p>Spout       &#x55B7;&#x53E3;,&#x55B7;&#x51FA;                        (Task&#x4EFB;&#x52A1;&#x7C7B;&#x578B;  Spout  &#x7EBF;&#x7A0B;)</p>
 </li>
-<li><p>Bolt       突然的,筛选,突然说出,脱口说出       (任务类型  Bolt)</p>
+<li><p>Bolt       &#x7A81;&#x7136;&#x7684;,&#x7B5B;&#x9009;,&#x7A81;&#x7136;&#x8BF4;&#x51FA;,&#x8131;&#x53E3;&#x8BF4;&#x51FA;       (Task&#x4EFB;&#x52A1;&#x7C7B;&#x578B;  Bolt  &#x7EBF;&#x7A0B;)</p>
 </li>
 </ol>
 <p>#</p>
-<h4 id="Storm应用场景及行业案例"><a href="#Storm应用场景及行业案例" class="headerlink" title="Storm应用场景及行业案例"></a>Storm应用场景及行业案例</h4><p>Storm用来实时计算源源不断产生的数据,如同流水线生产.</p>
-<h5 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h5><ul>
-<li><p>日志分析</p>
-<p>  从海量日志中分析出特定数据,将分析的结果存入数据库</p>
+<h4 id="Storm&#x5E94;&#x7528;&#x573A;&#x666F;&#x53CA;&#x884C;&#x4E1A;&#x6848;&#x4F8B;"><a href="#Storm&#x5E94;&#x7528;&#x573A;&#x666F;&#x53CA;&#x884C;&#x4E1A;&#x6848;&#x4F8B;" class="headerlink" title="Storm&#x5E94;&#x7528;&#x573A;&#x666F;&#x53CA;&#x884C;&#x4E1A;&#x6848;&#x4F8B;"></a>Storm&#x5E94;&#x7528;&#x573A;&#x666F;&#x53CA;&#x884C;&#x4E1A;&#x6848;&#x4F8B;</h4><p>Storm&#x7528;&#x6765;&#x5B9E;&#x65F6;&#x8BA1;&#x7B97;&#x6E90;&#x6E90;&#x4E0D;&#x65AD;&#x4EA7;&#x751F;&#x7684;&#x6570;&#x636E;,&#x5982;&#x540C;&#x6D41;&#x6C34;&#x7EBF;&#x751F;&#x4EA7;.</p>
+<h5 id="&#x5E94;&#x7528;&#x573A;&#x666F;"><a href="#&#x5E94;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x5E94;&#x7528;&#x573A;&#x666F;"></a>&#x5E94;&#x7528;&#x573A;&#x666F;</h5><ul class="ui list">
+<li><p>&#x65E5;&#x5FD7;&#x5206;&#x6790;</p>
+<p>  &#x4ECE;&#x6D77;&#x91CF;&#x65E5;&#x5FD7;&#x4E2D;&#x5206;&#x6790;&#x51FA;&#x7279;&#x5B9A;&#x6570;&#x636E;,&#x5C06;&#x5206;&#x6790;&#x7684;&#x7ED3;&#x679C;&#x5B58;&#x5165;&#x6570;&#x636E;&#x5E93;</p>
 </li>
-<li><p>管道系统</p>
-<p>  将一个数据从一个系统传输到另外一个系统,如将数据库同步到Hadoop</p>
+<li><p>&#x7BA1;&#x9053;&#x7CFB;&#x7EDF;</p>
+<p>  &#x5C06;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x4ECE;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4F20;&#x8F93;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;,&#x5982;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x540C;&#x6B65;&#x5230;Hadoop</p>
 </li>
-<li><p>消息转换器</p>
-<p>  将接受到的消息按照某种格式进行转化,存储到另外一个系统如消息中间件</p>
+<li><p>&#x6D88;&#x606F;&#x8F6C;&#x6362;&#x5668;</p>
+<p>  &#x5C06;&#x63A5;&#x53D7;&#x5230;&#x7684;&#x6D88;&#x606F;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x8F6C;&#x5316;,&#x5B58;&#x50A8;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x5982;&#x6D88;&#x606F;&#x4E2D;&#x95F4;&#x4EF6;</p>
 </li>
 </ul>
-<h5 id="典型案例"><a href="#典型案例" class="headerlink" title="典型案例"></a>典型案例</h5><p><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fwyckegszhj30v20ho41h.jpg" alt=""></p>
-<h4 id="Storm核心组件"><a href="#Storm核心组件" class="headerlink" title="Storm核心组件"></a>Storm核心组件</h4><p><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fwycmq4l5tj30xe0pin3r.jpg" alt=""></p>
+<h5 id="&#x5178;&#x578B;&#x6848;&#x4F8B;"><a href="#&#x5178;&#x578B;&#x6848;&#x4F8B;" class="headerlink" title="&#x5178;&#x578B;&#x6848;&#x4F8B;"></a>&#x5178;&#x578B;&#x6848;&#x4F8B;</h5><p><a class="magnific-img" href="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fwyckegszhj30v20ho41h.jpg"><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fwyckegszhj30v20ho41h.jpg" alt="" class="ui centered image"></a></p>
+<h4 id="Storm&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;"><a href="#Storm&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;" class="headerlink" title="Storm&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;"></a>Storm&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;</h4><p><a class="magnific-img" href="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fwycmq4l5tj30xe0pin3r.jpg"><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fwycmq4l5tj30xe0pin3r.jpg" alt="" class="ui centered image"></a></p>
+<ul class="ui list">
+<li>nimbus&#x53EA;&#x6709;&#x4E00;&#x4E2A;,supervisor&#x6709;&#x591A;&#x4E2A;,&#x4E00;&#x4E2A;supervisor&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;worker.</li>
+<li>nimbus&#x901A;&#x8FC7;zookeeper&#x4E0E;supervisor&#x4EA4;&#x4E92;</li>
+</ul>
+<h4 id="Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;"><a href="#Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;" class="headerlink" title="Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;"></a>Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;</h4><p><a class="magnific-img" href="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqzo7akj30w80nq42j.jpg"><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqzo7akj30w80nq42j.jpg" alt="Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;.png" class="ui centered image"></a></p>
+<ul class="ui list">
+<li>nimbus: &#x8D1F;&#x8D23;&#x8D44;&#x6E90;&#x5206;&#x914D;&#x548C;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;</li>
+<li>supervisor: &#x8D1F;&#x8D23;&#x63A5;&#x53D7;nimbus&#x5206;&#x914D;&#x7684;&#x4EFB;&#x52A1;,&#x542F;&#x52A8;&#x548C;&#x505C;&#x6B62;&#x5C5E;&#x4E8E;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#x7684;worker&#x8FDB;&#x7A0B;(&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x53F7;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;).</li>
+<li>worker: &#x8FD0;&#x884C;&#x5177;&#x4F53;&#x5904;&#x7406;&#x7EC4;&#x4EF6;&#x903B;&#x8F91;&#x7684;&#x8FDB;&#x7A0B;.worker&#x7684;&#x4EFB;&#x52A1;&#x7C7B;&#x578B;&#x6709;&#x4E24;&#x79CD;(Spout&#x4EFB;&#x52A1;,Bolt&#x4EFB;&#x52A1;).</li>
+<li>task: worker&#x4E2D;&#x6BCF;&#x4E2A;spout/bolt&#x7684;&#x7EBF;&#x7A0B;&#x79F0;&#x4E3A;&#x4E00;&#x4E2A;task.</li>
+</ul>
+<h4 id="&#x6D41;&#x5F0F;&#x8BA1;&#x7B97;&#x4E00;&#x822C;&#x67B6;&#x6784;&#x56FE;"><a href="#&#x6D41;&#x5F0F;&#x8BA1;&#x7B97;&#x4E00;&#x822C;&#x67B6;&#x6784;&#x56FE;" class="headerlink" title="&#x6D41;&#x5F0F;&#x8BA1;&#x7B97;&#x4E00;&#x822C;&#x67B6;&#x6784;&#x56FE;"></a>&#x6D41;&#x5F0F;&#x8BA1;&#x7B97;&#x4E00;&#x822C;&#x67B6;&#x6784;&#x56FE;</h4><p><a class="magnific-img" href="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqulsrnj30wz051q4v.jpg"><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqulsrnj30wz051q4v.jpg" alt="&#x6D41;&#x5F0F;&#x8BA1;&#x7B97;&#x67B6;&#x6784;&#x56FE;.png" class="ui centered image"></a></p>
+<ul class="ui list">
+<li>flume&#x7528;&#x6765;&#x83B7;&#x53D6;&#x6570;&#x636E;(&#x53EF;&#x7528;&#x4E8E;&#x65E5;&#x5FD7;&#x6536;&#x96C6;)</li>
+<li>Kafka&#x7528;&#x6765;&#x4E34;&#x65F6;&#x4FDD;&#x5B58;&#x6570;&#x636E;(&#x6D88;&#x606F;&#x961F;&#x5217;)</li>
+<li>Storm&#x7528;&#x6765;&#x8BA1;&#x7B97;&#x6570;&#x636E;(&#x5B9E;&#x65F6;&#x8BA1;&#x7B97;)</li>
+<li>Redis&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x6570;&#x636E;(&#x5185;&#x5B58;&#x6570;&#x636E;&#x5E93;) &#x6301;&#x4E45;&#x5316;</li>
+</ul>
+<p>#</p>
+<h4 id="Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#x603B;&#x7ED3;"><a href="#Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#x603B;&#x7ED3;" class="headerlink" title="Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#x603B;&#x7ED3;"></a>Storm&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#x603B;&#x7ED3;</h4><ol class="ui list">
+<li><p>&#x7F16;&#x7A0B;&#x6A21;&#x578B;</p>
+<pre><code>DataSource:&#x5916;&#x90E8;&#x6570;&#x636E;&#x6E90;
+Spout: &#x63A5;&#x6536;&#x5916;&#x90E8;&#x6570;&#x636E;&#x6E90;&#x7684;&#x7EC4;&#x4EF6;,&#x5C06;&#x5916;&#x90E8;&#x6570;&#x636E;&#x6E90;&#x8F6C;&#x6362;&#x6210;Storm&#x5185;&#x90E8;&#x7684;&#x6570;&#x636E;,&#x4EE5; Tuple(&#x5143;&#x7EC4;) &#x4E3A;&#x57FA;&#x672C;&#x7684;&#x4F20;&#x8F93;&#x5355;&#x5143;&#x4E0B;&#x53D1;&#x7ED9;Bolt.
+Bolt: &#x63A5;&#x6536;Spout&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;,&#x6216;&#x4E0A;&#x6E38;&#x7684;Bolt&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;.&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x8FDB;&#x884C;&#x5904;&#x7406;,&#x53D1;&#x9001;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A;Bolt&#x6216;&#x8005;&#x662F;&#x5B58;&#x50A8;&#x5230;&#x67D0;&#x4E2A;&#x4ECB;&#x8D28;&#x4E0A;,&#x4ECB;&#x8D28;&#x53EF;&#x4EE5;&#x662F;Redis&#x6216;MySql&#x7B49;.
+Tuple: Storm&#x5185;&#x90E8;&#x4E2D;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7684; &#x57FA;&#x672C;&#x5355;&#x5143; ,&#x91CC;&#x9762;&#x5C01;&#x88C5;&#x7684;List&#x5BF9;&#x8C61;,&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x6570;&#x636E;.
+</code></pre><p>StreamGrouping:&#x6570;&#x636E;&#x5206;&#x7EC4;&#x7B56;&#x7565;(7&#x79CD;)</p>
 <ul>
-<li>nimbus只有一个,supervisor有多个,一个supervisor可以有多个worker.</li>
-<li>nimbus通过zookeeper与supervisor交互</li>
+<li>ShuffleGrouping      (Random&#x51FD;&#x6570;)</li>
+<li>NonGrouping          (Random&#x51FD;&#x6570;)</li>
+<li>FiledGrouping        (Hash&#x53D6;&#x6A21;)</li>
+<li>Local or ShuffleGrouping (&#x672C;&#x5730;&#x6216;&#x968F;&#x673A; &#x672C;&#x5730;&#x4F18;&#x5148;)</li>
 </ul>
-<h4 id="Storm编程模型"><a href="#Storm编程模型" class="headerlink" title="Storm编程模型"></a>Storm编程模型</h4><p><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqzo7akj30w80nq42j.jpg" alt="Storm编程模型.png"></p>
-<h4 id="流式计算一般架构图"><a href="#流式计算一般架构图" class="headerlink" title="流式计算一般架构图"></a>流式计算一般架构图</h4><p><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fwycqulsrnj30wz051q4v.jpg" alt="流式计算架构图.png"></p>
-<ul>
-<li>flume用来获取数据(可用于日志收集)</li>
-<li>Kafka用来临时保存数据(消息队列)</li>
-<li>Storm用来计算数据(实时计算)</li>
-<li>Redis用来保存数据(内存数据库) 持久化</li>
+</li>
+</ol>
+<ul class="ui list">
+<li>&#x2026;</li>
 </ul>
+<ol start="2" class="ui list">
+<li><p>&#x5E76;&#x53D1;&#x5EA6;</p>
+<pre><code>&#x7528;&#x6237;&#x6307;&#x5B9A;&#x7684;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;,&#x53EF;&#x4EE5;&#x88AB;&#x591A;&#x5C11;&#x7EBF;&#x7A0B;&#x6267;&#x884C;,&#x5E76;&#x53D1;&#x5EA6;&#x7B49;&#x4E8E;&#x7EBF;&#x7A0B;&#x7684;&#x6570;&#x91CF;.&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x7684;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;,&#x4F1A;&#x88AB;&#x8FD0;&#x884C;&#x5728;&#x591A;&#x4E2A;Worker(JVM)&#x4E0A;.
+&#x5E73;&#x5747;&#x7B97;&#x6CD5;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;,&#x5C3D;&#x53EF;&#x80FD;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;IO,&#x7C7B;&#x4F3C;&#x4E8E;Hadoop&#x4E2D;&#x7684;MapReduce&#x4E2D;&#x7684;&#x672C;&#x5730;&#x8BA1;&#x7B97;.
+</code></pre></li>
+<li><p>&#x67B6;&#x6784;</p>
+<pre><code>Nimbus: &#x4EFB;&#x52A1;&#x5206;&#x914D;
+Supervisor: &#x63A5;&#x6536;&#x4EFB;&#x52A1;,&#x542F;&#x52A8;worker.worker&#x7684;&#x6570;&#x91CF;&#x6839;&#x636E;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x914D;&#x7F6E;.
+Worker:&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x7684;&#x5177;&#x4F53;&#x7EC4;&#x4EF6;(&#x4E00;&#x4E2A;JVM&#x8FDB;&#x7A0B;),&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x4EFB;&#x52A1;,Spout&#x4EFB;&#x52A1;&#x548C;Bolt&#x4EFB;&#x52A1;.
+Task:(Spout&#x4EFB;&#x52A1;&#x6216;Bolt&#x4EFB;&#x52A1;)
+ZooKeeper: &#x4FDD;&#x5B58;&#x4FE1;&#x606F;,&#x4EFB;&#x52A1;&#x5206;&#x914D;,&#x5FC3;&#x8DF3;&#x4FE1;&#x606F;,&#x5143;&#x6570;&#x636E;&#x4FE1;&#x606F;&#x7B49;.
+Tepology: &#x4E00;&#x4E2A;Strom&#x5E94;&#x7528;&#x7A0B;&#x5E8F;.
+</code></pre></li>
+<li><p>Worker&#x4E0E;Topology</p>
+<pre><code>&#x4E00;&#x4E2A;worker&#x53EA;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;topology
+&#x4E00;&#x4E2A;topology&#x8981;&#x6C42;&#x7684;worker&#x6570;&#x91CF;&#x5982;&#x679C;&#x4E0D;&#x88AB;&#x6EE1;&#x8DB3;,&#x96C6;&#x7FA4;&#x5728;&#x4EFB;&#x52A1;&#x5206;&#x914D;&#x65F6;,&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;worker&#x5148;&#x8FD0;&#x884C;topology.&#x5982;&#x679C;&#x5F53;&#x524D;&#x96C6;&#x7FA4;&#x4E2D;worker&#x6570;&#x91CF;&#x4E3A;0,&#x90A3;&#x4E48;&#x6700;&#x65B0;&#x63D0;&#x4EA4;&#x7684;topology&#x5C06;&#x53EA;&#x4F1A;&#x88AB;&#x6807;&#x8BC6;active,&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;.&#x53EA;&#x6709;&#x5F53;&#x96C6;&#x7FA4;&#x6709;&#x4E86;&#x7A7A;&#x95F2;&#x8D44;&#x6E90;,&#x624D;&#x80FD;&#x591F;&#x8FD0;&#x884C;.
+</code></pre></li>
+</ol>
 
                         
                     </div>
@@ -301,7 +352,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#Storm是由什么语言编写的"><span>Storm是由什么语言编写的?</span></a></li><li><a href="#Storm用来实时处理数据"><span>Storm用来实时处理数据</span></a></li><li><a href="#Storm与Hadoop的区别"><span>Storm与Hadoop的区别</span></a></li><li><a href="#Storm应用场景及行业案例"><span>Storm应用场景及行业案例</span></a><ol><li><a href="#应用场景"><span>应用场景</span></a></li><li><a href="#典型案例"><span>典型案例</span></a></li></ol></li><li><a href="#Storm核心组件"><span>Storm核心组件</span></a></li><li><a href="#Storm编程模型"><span>Storm编程模型</span></a></li><li><a href="#流式计算一般架构图"><span>流式计算一般架构图</span></a></li></ol>
+                    <ol class="ui ordered list"><li><a href="#Storm是由什么语言编写的"><span>Storm是由什么语言编写的?</span></a></li><li><a href="#Storm用来实时处理数据"><span>Storm用来实时处理数据</span></a></li><li><a href="#Storm与Hadoop的区别"><span>Storm与Hadoop的区别</span></a></li><li><a href="#Storm应用场景及行业案例"><span>Storm应用场景及行业案例</span></a><ol><li><a href="#应用场景"><span>应用场景</span></a></li><li><a href="#典型案例"><span>典型案例</span></a></li></ol></li><li><a href="#Storm核心组件"><span>Storm核心组件</span></a></li><li><a href="#Storm编程模型"><span>Storm编程模型</span></a></li><li><a href="#流式计算一般架构图"><span>流式计算一般架构图</span></a></li><li><a href="#Storm编程模型总结"><span>Storm编程模型总结</span></a></li></ol>
                 </div>
 
             </div>

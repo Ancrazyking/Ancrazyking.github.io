@@ -9,20 +9,20 @@
     <title>RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储) | Afeng&#39;s Blogs</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="RAID(独立磁盘 _冗余_ 阵列)RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.  常用的RAID技术   HDFS(分布式文件系统)通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.  HDFS架构">
+    <meta name="description" content="RAID(&amp;#x72EC;&amp;#x7ACB;&amp;#x78C1;&amp;#x76D8; _&amp;#x5197;&amp;#x4F59;_ &amp;#x9635;&amp;#x5217;)RAID&amp;#x6280;&amp;#x672F;&amp;#x662F;&amp;#x5C06; &amp;#x591A;&amp;#x5757;&amp;#x666E;&amp;#x901A;&amp;#x78C1;&amp;#x76D8; &amp;#x7EC4;&amp;#x6210;&amp;#x4E00;&amp;#x4E2A;&amp;#x9635;">
 <meta name="keywords" content="hdfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储)">
 <meta property="og:url" content="http://yoursite.com/2018/11/08/RAID与HDFS/index.html">
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
-<meta property="og:description" content="RAID(独立磁盘 _冗余_ 阵列)RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.  常用的RAID技术   HDFS(分布式文件系统)通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.  HDFS架构">
+<meta property="og:description" content="RAID(&amp;#x72EC;&amp;#x7ACB;&amp;#x78C1;&amp;#x76D8; _&amp;#x5197;&amp;#x4F59;_ &amp;#x9635;&amp;#x5217;)RAID&amp;#x6280;&amp;#x672F;&amp;#x662F;&amp;#x5C06; &amp;#x591A;&amp;#x5757;&amp;#x666E;&amp;#x901A;&amp;#x78C1;&amp;#x76D8; &amp;#x7EC4;&amp;#x6210;&amp;#x4E00;&amp;#x4E2A;&amp;#x9635;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx0e0cn555j30zk0k0wft.jpg">
-<meta property="og:updated_time" content="2018-11-08T01:17:16.868Z">
+<meta property="og:updated_time" content="2018-11-08T01:47:33.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAID到HDFS,从水平伸缩到水平伸缩(大数据的存储)">
-<meta name="twitter:description" content="RAID(独立磁盘 _冗余_ 阵列)RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.  常用的RAID技术   HDFS(分布式文件系统)通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.  HDFS架构">
+<meta name="twitter:description" content="RAID(&amp;#x72EC;&amp;#x7ACB;&amp;#x78C1;&amp;#x76D8; _&amp;#x5197;&amp;#x4F59;_ &amp;#x9635;&amp;#x5217;)RAID&amp;#x6280;&amp;#x672F;&amp;#x662F;&amp;#x5C06; &amp;#x591A;&amp;#x5757;&amp;#x666E;&amp;#x901A;&amp;#x78C1;&amp;#x76D8; &amp;#x7EC4;&amp;#x6210;&amp;#x4E00;&amp;#x4E2A;&amp;#x9635;">
 <meta name="twitter:image" content="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg">
 
     <script type="application/ld+json">
@@ -83,7 +83,7 @@
                     <a class="header">afenga</a>
                     
                         <div class="meta">
-                            Programer / Coder
+                            Student/ Programer / Coder
                         </div>
                     
                 </div>
@@ -104,6 +104,14 @@
                         
 
                                 <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
 
                             
                     </div>
@@ -158,16 +166,16 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        <h3 id="RAID-独立磁盘-冗余-阵列"><a href="#RAID-独立磁盘-冗余-阵列" class="headerlink" title="RAID(独立磁盘 _冗余_ 阵列)"></a>RAID(独立磁盘 _冗余_ 阵列)</h3><pre><code>RAID技术是将 多块普通磁盘 组成一个阵列,共同对外提供服务.主要是为了改善磁盘的存储容量,读写速度,增强磁盘的可用性和容错性.
-</code></pre><ul>
-<li>常用的RAID技术</li>
+                        <h3 id="RAID-&#x72EC;&#x7ACB;&#x78C1;&#x76D8;-&#x5197;&#x4F59;-&#x9635;&#x5217;"><a href="#RAID-&#x72EC;&#x7ACB;&#x78C1;&#x76D8;-&#x5197;&#x4F59;-&#x9635;&#x5217;" class="headerlink" title="RAID(&#x72EC;&#x7ACB;&#x78C1;&#x76D8; _&#x5197;&#x4F59;_ &#x9635;&#x5217;)"></a>RAID(&#x72EC;&#x7ACB;&#x78C1;&#x76D8; _&#x5197;&#x4F59;_ &#x9635;&#x5217;)</h3><pre><code>RAID&#x6280;&#x672F;&#x662F;&#x5C06; &#x591A;&#x5757;&#x666E;&#x901A;&#x78C1;&#x76D8; &#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x9635;&#x5217;,&#x5171;&#x540C;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;.&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x6539;&#x5584;&#x78C1;&#x76D8;&#x7684;&#x5B58;&#x50A8;&#x5BB9;&#x91CF;,&#x8BFB;&#x5199;&#x901F;&#x5EA6;,&#x589E;&#x5F3A;&#x78C1;&#x76D8;&#x7684;&#x53EF;&#x7528;&#x6027;&#x548C;&#x5BB9;&#x9519;&#x6027;.
+</code></pre><ul class="ui list">
+<li>&#x5E38;&#x7528;&#x7684;RAID&#x6280;&#x672F;</li>
 </ul>
-<p><img src="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg" alt="raid.png"></p>
-<h3 id="HDFS-分布式文件系统"><a href="#HDFS-分布式文件系统" class="headerlink" title="HDFS(分布式文件系统)"></a>HDFS(分布式文件系统)</h3><pre><code>通过添加更多的 服务器 实现数据更大,更快,更安全的存储与访问.
-</code></pre><ul>
-<li>HDFS架构</li>
+<p><a class="magnific-img" href="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg"><img src="https://static001.geekbang.org/resource/image/54/af/54e170b7438fe3b8f8196dbfbc943baf.jpg" alt="raid.png" class="ui centered image"></a></p>
+<h3 id="HDFS-&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><a href="#HDFS-&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;" class="headerlink" title="HDFS(&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;)"></a>HDFS(&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;)</h3><pre><code>&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684; &#x670D;&#x52A1;&#x5668; &#x5B9E;&#x73B0;&#x6570;&#x636E;&#x66F4;&#x5927;,&#x66F4;&#x5FEB;,&#x66F4;&#x5B89;&#x5168;&#x7684;&#x5B58;&#x50A8;&#x4E0E;&#x8BBF;&#x95EE;.
+</code></pre><ul class="ui list">
+<li>HDFS&#x67B6;&#x6784;</li>
 </ul>
-<p><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx0e0cn555j30zk0k0wft.jpg" alt="HDFS.png"></p>
+<p><a class="magnific-img" href="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx0e0cn555j30zk0k0wft.jpg"><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx0e0cn555j30zk0k0wft.jpg" alt="HDFS.png" class="ui centered image"></a></p>
 
                         
                     </div>

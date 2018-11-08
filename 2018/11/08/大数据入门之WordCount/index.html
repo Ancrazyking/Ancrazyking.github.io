@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>大数据的&#34;hello world&#34; -word count | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="&amp;#x8BCD;&amp;#x9891;&amp;#x7EDF;&amp;#x8BA1;,&amp;#x6BCF;&amp;#x4E2A;&amp;#x5355;&amp;#x8BCD;&amp;#x5728;&amp;#x6587;&amp;#x672C;&amp;#x4E2D;&amp;#x51FA;&amp;#x73B0;&amp;#x7684;&amp;#x6B21;&amp;#x6570;Java &amp;#x7248;&amp;#x672C;(&amp;#x5355;&amp;#x8BCD;&amp;#x8BA1;&amp;#x6570;) &amp;#x6309">
+<meta name="keywords" content="big data program">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据的&quot;hello world&quot; -word count">
+<meta property="og:url" content="http://yoursite.com/2018/11/08/大数据入门之WordCount/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="&amp;#x8BCD;&amp;#x9891;&amp;#x7EDF;&amp;#x8BA1;,&amp;#x6BCF;&amp;#x4E2A;&amp;#x5355;&amp;#x8BCD;&amp;#x5728;&amp;#x6587;&amp;#x672C;&amp;#x4E2D;&amp;#x51FA;&amp;#x73B0;&amp;#x7684;&amp;#x6B21;&amp;#x6570;Java &amp;#x7248;&amp;#x672C;(&amp;#x5355;&amp;#x8BCD;&amp;#x8BA1;&amp;#x6570;) &amp;#x6309">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-08T11:50:11.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大数据的&quot;hello world&quot; -word count">
+<meta name="twitter:description" content="&amp;#x8BCD;&amp;#x9891;&amp;#x7EDF;&amp;#x8BA1;,&amp;#x6BCF;&amp;#x4E2A;&amp;#x5355;&amp;#x8BCD;&amp;#x5728;&amp;#x6587;&amp;#x672C;&amp;#x4E2D;&amp;#x51FA;&amp;#x73B0;&amp;#x7684;&amp;#x6B21;&amp;#x6570;Java &amp;#x7248;&amp;#x672C;(&amp;#x5355;&amp;#x8BCD;&amp;#x8BA1;&amp;#x6570;) &amp;#x6309">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Student/ Programer / Coder
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-大数据入门之WordCount" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    大数据的&#34;hello world&#34; -word count
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="&#x8BCD;&#x9891;&#x7EDF;&#x8BA1;-&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x5728;&#x6587;&#x672C;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;"><a href="#&#x8BCD;&#x9891;&#x7EDF;&#x8BA1;-&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x5728;&#x6587;&#x672C;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;" class="headerlink" title="&#x8BCD;&#x9891;&#x7EDF;&#x8BA1;,&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x5728;&#x6587;&#x672C;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;"></a>&#x8BCD;&#x9891;&#x7EDF;&#x8BA1;,&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x5728;&#x6587;&#x672C;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;</h3><h4 id="Java-&#x7248;&#x672C;-&#x5355;&#x8BCD;&#x8BA1;&#x6570;"><a href="#Java-&#x7248;&#x672C;-&#x5355;&#x8BCD;&#x8BA1;&#x6570;" class="headerlink" title="Java &#x7248;&#x672C;(&#x5355;&#x8BCD;&#x8BA1;&#x6570;)"></a>Java &#x7248;&#x672C;(&#x5355;&#x8BCD;&#x8BA1;&#x6570;)</h4><ol class="ui list">
+<li><p>&#x6309;&#x884C;&#x8BFB;&#x53D6;&#x6587;&#x672C;&#x4E2D;&#x7684;&#x6570;&#x636E;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader bufferedReader = new BufferedReader(new FileReader(&quot;F:/wordcount.txt&quot;));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5BF9;&#x6BCF;&#x884C;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5207;&#x5272;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String firstLine = bufferedReader.readLine();</span><br><span class="line">      list.add(firstLine);</span><br><span class="line">      while (firstLine != null)</span><br><span class="line">      {</span><br><span class="line">          String[] line = bufferedReader.readLine().split(&quot; &quot;);</span><br><span class="line">          for (String word : line)</span><br><span class="line">          {</span><br><span class="line">              list.add(word);</span><br><span class="line">          }</span><br><span class="line">          firstLine = bufferedReader.readLine();</span><br><span class="line">      }</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5BF9;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5355;&#x8BCD;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(String word:list){</span><br><span class="line">           if(hashMap.containsKey(word)){</span><br><span class="line">               hashMap.put(word,hashMap.get(word)+1);</span><br><span class="line">           }else{</span><br><span class="line">               hashMap.put(word,1);</span><br><span class="line">           }</span><br><span class="line">       }</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Hadoop&#x7684;MapReduce"><a href="#Hadoop&#x7684;MapReduce" class="headerlink" title="Hadoop&#x7684;MapReduce"></a>Hadoop&#x7684;MapReduce</h4><ol class="ui list">
+<li><p>TextInputFormat &#x2014;&#x2014;&gt; readline</p>
+</li>
+<li><p>map&lt;key,value&gt;{}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//&#x8F93;&#x5165;&#x6620;&#x5C04;:&#x6309;&#x884C;&#x8BFB;&#x53D6;,LongWritable(Long)&#x4EE3;&#x8868;&#x7684;&#x662F;&#x504F;&#x79FB;&#x91CF;,Text(String)&#x5219;&#x8868;&#x793A;&#x4E00;&#x884C;&#x6587;&#x672C;       java java java</span><br><span class="line">//&#x8F93;&#x51FA;&#x6620;&#x5C04;:Text&#x8868;&#x793A;&#x5355;&#x4E2A;&#x7684;&#x5355;&#x8BCD;,IntWritable&#x8868;&#x793A;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;   [java,1] [java,1] [java,1]</span><br><span class="line">public static class WCMapper extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt;</span><br><span class="line">{</span><br><span class="line">    private Text keyOut = new Text();</span><br><span class="line">    private IntWritable valueOut = new IntWritable();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException</span><br><span class="line">    {</span><br><span class="line">        String strLine = value.toString();</span><br><span class="line">        String[] strs = strLine.split(&quot; &quot;);</span><br><span class="line">        for (String str : strs)</span><br><span class="line">        {</span><br><span class="line">            keyOut.set(str);</span><br><span class="line">            valueOut.set(1);</span><br><span class="line">            //&#x5C06;&#x8F93;&#x5165;&#x7ED3;&#x679C;&#x5199;&#x5165;&#x5230;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;</span><br><span class="line">            context.write(keyOut, valueOut);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hadoop shuffle</p>
+</li>
+<li><p>reduce&lt;key,value&gt;{}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//&#x8F93;&#x5165;&#x6620;&#x5C04;:map&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x7ECF;&#x8FC7;shuffle&#x9636;&#x6BB5;&#x7684;&#x6DF7;&#x6D17;,Text IntWritable</span><br><span class="line">//&#x8F93;&#x51FA;&#x6620;&#x5C04;:Text   IntWritable</span><br><span class="line">public static class WCReducer extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt;</span><br><span class="line">{</span><br><span class="line">    private IntWritable count = new IntWritable();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException</span><br><span class="line">    {</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (IntWritable v : values)</span><br><span class="line">        {</span><br><span class="line">            sum += v.get();</span><br><span class="line">        }</span><br><span class="line">        count.set(sum);</span><br><span class="line">        System.out.println(count.toString());</span><br><span class="line">        //&#x5C06;reduce&#x51FD;&#x6570;&#x7684;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x5199;&#x5165;&#x4E0A;&#x4E0B;&#x6587;</span><br><span class="line">        context.write(key, count);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Storm&#x7248;&#x672C;&#x7684;-word-count"><a href="#Storm&#x7248;&#x672C;&#x7684;-word-count" class="headerlink" title="Storm&#x7248;&#x672C;&#x7684; word count"></a>Storm&#x7248;&#x672C;&#x7684; word count</h4><ol class="ui list">
+<li>Spout  &#x8F93;&#x51FA;:tuple(line)</li>
+</ol>
+<ol start="2" class="ui list">
+<li>SplitBolt  &#x8F93;&#x5165;tuple(line)  &#x8F93;&#x51FA;word</li>
+</ol>
+<ol start="3" class="ui list">
+<li>wordcountBolt  &#x8F93;&#x5165;word &#x8F93;&#x51FA;</li>
+</ol>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-08T05:30:00.000Z" itemprop="datePublished">2018-11-08</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/big-data-program/">big data program</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2018/11/08/LinkedList/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    数据结构-链表
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/08/array/" class="ui tiny button">
+                    
+                    最基础的数据结构-数组
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#词频统计-每个单词在文本中出现的次数"><span>词频统计,每个单词在文本中出现的次数</span></a><ol><li><a href="#Java-版本-单词计数"><span>Java 版本(单词计数)</span></a></li><li><a href="#Hadoop的MapReduce"><span>Hadoop的MapReduce</span></a></li><li><a href="#Storm版本的-word-count"><span>Storm版本的 word count</span></a></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
