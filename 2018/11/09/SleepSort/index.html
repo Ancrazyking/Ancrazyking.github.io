@@ -6,18 +6,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name="description" content="">
-    <title>算法-各类排序算法总结 | Afeng&#39;s Blogs</title>
+    <title>睡眠排序 - 还有这种操作?好用就完事了! | Afeng&#39;s Blogs</title>
 
     <!-- Open Graph -->
-    <meta name="keywords" content="算法">
+    <meta name="description" content="&amp;#x7761;&amp;#x7720;&amp;#x6392;&amp;#x5E8F; &amp;#x7ED9;&amp;#x5B9A;&amp;#x4E00;&amp;#x7EC4;&amp;#x5143;&amp;#x7D20;&amp;#x96C6;&amp;#x5408;,&amp;#x6839;&amp;#x636E;&amp;#x96C6;&amp;#x5408;&amp;#x4E2D;&amp;#x7684;&amp;#x6BCF;&amp;#x4E00;&amp;#x4E2A;&amp;#x5143;&amp;#x7D20;,&amp;#x5F00;&amp;#x54">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法-各类排序算法总结">
-<meta property="og:url" content="http://yoursite.com/2018/11/09/sort/index.html">
+<meta property="og:title" content="睡眠排序 - 还有这种操作?好用就完事了!">
+<meta property="og:url" content="http://yoursite.com/2018/11/09/SleepSort/index.html">
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="&amp;#x7761;&amp;#x7720;&amp;#x6392;&amp;#x5E8F; &amp;#x7ED9;&amp;#x5B9A;&amp;#x4E00;&amp;#x7EC4;&amp;#x5143;&amp;#x7D20;&amp;#x96C6;&amp;#x5408;,&amp;#x6839;&amp;#x636E;&amp;#x96C6;&amp;#x5408;&amp;#x4E2D;&amp;#x7684;&amp;#x6BCF;&amp;#x4E00;&amp;#x4E2A;&amp;#x5143;&amp;#x7D20;,&amp;#x5F00;&amp;#x54">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-09T05:44:28.145Z">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx1t608bbfj31hc0u0adj.jpg">
+<meta property="og:updated_time" content="2018-11-09T11:34:22.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法-各类排序算法总结">
+<meta name="twitter:title" content="睡眠排序 - 还有这种操作?好用就完事了!">
+<meta name="twitter:description" content="&amp;#x7761;&amp;#x7720;&amp;#x6392;&amp;#x5E8F; &amp;#x7ED9;&amp;#x5B9A;&amp;#x4E00;&amp;#x7EC4;&amp;#x5143;&amp;#x7D20;&amp;#x96C6;&amp;#x5408;,&amp;#x6839;&amp;#x636E;&amp;#x96C6;&amp;#x5408;&amp;#x4E2D;&amp;#x7684;&amp;#x6BCF;&amp;#x4E00;&amp;#x4E2A;&amp;#x5143;&amp;#x7D20;,&amp;#x5F00;&amp;#x54">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx1t608bbfj31hc0u0adj.jpg">
 
     <script type="application/ld+json">
 {
@@ -138,7 +143,7 @@
             <!--<div class="ui one column grid">-->
                 <!--<div class="column">-->
                     <!--<div class="ui main container">-->
-                        <div id="post-sort" class="ui main container article-type-post">
+                        <div id="post-SleepSort" class="ui main container article-type-post">
 
     
 
@@ -151,7 +156,7 @@
 
 <h1 class="ui header">
     
-    算法-各类排序算法总结
+    睡眠排序 - 还有这种操作?好用就完事了!
 </h1>
 
 
@@ -160,7 +165,26 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        
+                        <h5 id="&#x7761;&#x7720;&#x6392;&#x5E8F;"><a href="#&#x7761;&#x7720;&#x6392;&#x5E8F;" class="headerlink" title="&#x7761;&#x7720;&#x6392;&#x5E8F;"></a>&#x7761;&#x7720;&#x6392;&#x5E8F;</h5><p> &#x7ED9;&#x5B9A;&#x4E00;&#x7EC4;&#x5143;&#x7D20;&#x96C6;&#x5408;,&#x6839;&#x636E;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;,&#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;.&#x7EBF;&#x7A0B;&#x7761;&#x7720;&#x7684;&#x65F6;&#x95F4;&#x7B49;&#x4E8E;&#x8BE5;&#x5143;&#x7D20;&#x7684;&#x503C;.</p>
+<ul class="ui list">
+<li>Java &#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;(&#x9700;&#x8981;&#x5B9E;&#x73B0;Runnable&#x63A5;&#x53E3;)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public  class SleepSort implements Runnable{</span><br><span class="line"></span><br><span class="line">private int num;</span><br><span class="line"></span><br><span class="line">public SleepSort(int num){</span><br><span class="line">    this.num=num;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void run(){</span><br><span class="line">    Thread.sleep(num);</span><br><span class="line">    //&#x7761;&#x7720;&#x7ED3;&#x675F;&#x540E;&#x6253;&#x5370;&#x8BE5;&#x503C;</span><br><span class="line">    System.out.println(num);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">public static void main(String[] args){</span><br><span class="line">    int[] arr={1,10,50,500,10000,13,29,54,87,168,256};</span><br><span class="line">    for(int a:arr){</span><br><span class="line">        new Thread(new SleepSort(a)).start;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul class="ui list">
+<li>&#x7761;&#x7720;&#x6392;&#x5E8F;</li>
+</ul>
+<ol class="ui list">
+<li>&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x53D6;&#x51B3;&#x4E8E;&#x6700;&#x5927;&#x5143;&#x7D20;&#x7684;&#x503C;</li>
+<li><p>&#x539F;&#x7406;&#x662F;&#x6784;&#x9020;n&#x4E2A;&#x7EBF;&#x7A0B;,&#x548C;&#x5143;&#x7D20;&#x4E2D;n&#x4E2A;&#x6570;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;.</p>
+<p> &#x521D;&#x59CB;&#x5316;&#x540E;,&#x7EBF;&#x7A0B;&#x4EEC;&#x5F00;&#x59CB;&#x7761;&#x7720;,&#x7761;&#x7720;&#x5B8C;&#x6210;&#x540E;,&#x5219;&#x8F93;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x5143;&#x7D20;.</p>
+</li>
+<li><p>&#x5F53;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x8FC7;&#x591A;&#x65F6;,&#x7EBF;&#x7A0B;&#x6570;&#x91CF;&#x4F1A;&#x5F88;&#x591A;,&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x5F00;&#x9500;&#x4F1A;&#x5F88;&#x5927;.</p>
+</li>
+<li><p>&#x60F3;&#x51FA;&#x8FD9;&#x4E2A;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x7684;&#x4EBA;</p>
+</li>
+</ol>
+<p><a class="magnific-img" href="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx1t608bbfj31hc0u0adj.jpg"><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx1t608bbfj31hc0u0adj.jpg" alt="genius.png" class="ui centered image"></a></p>
+
                         
                     </div>
 
@@ -170,7 +194,7 @@
 
                     <div class="description post-description">
     <span class="post-description-item">
-        <time datetime="2018-11-09T05:43:50.953Z" itemprop="datePublished">2018-11-09</time>
+        <time datetime="2018-11-09T06:24:08.802Z" itemprop="datePublished">2018-11-09</time>
 
     </span>
     <span class="post-description-item">
@@ -199,11 +223,11 @@
             <div class="column nav-left">
                 
 
-                <a href="/2018/11/09/SleepSort/" class="ui tiny button">
+                <a href="/2018/11/09/HDFS原理/" class="ui tiny button">
 
                     <i class="angle left icon"></i>
                     
-                    睡眠排序 - 还有这种操作?好用就完事了!
+                    HDFS原理篇(Hadoop Distributed File System)
                     
 
                 </a>
@@ -213,9 +237,9 @@
             <div class="column nav-right">
                 
 
-                <a href="/2018/11/09/graph/" class="ui tiny button">
+                <a href="/2018/11/09/sort/" class="ui tiny button">
                     
-                    数据结构-图
+                    算法-各类排序算法总结
                     
                     <i class="angle right icon"></i></a>
                 
@@ -232,7 +256,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    
+                    <ol class="ui ordered list"><li><a href="#睡眠排序"><span>睡眠排序</span></a></li></ol>
                 </div>
 
             </div>
