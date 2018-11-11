@@ -17,10 +17,12 @@
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
 <meta property="og:description" content="Spring Bean&amp;#x5728;Spring&amp;#x4E2D;,&amp;#x90A3;&amp;#x4E9B;&amp;#x7EC4;&amp;#x6210;&amp;#x5E94;&amp;#x7528;&amp;#x7A0B;&amp;#x5E8F;&amp;#x4E3B;&amp;#x4F53;&amp;#x53CA;&amp;#x6709;Spring IOC&amp;#x5BB9;&amp;#x5668;&amp;#x6240;&amp;#x7BA1;&amp;#x7406;&amp;#x7684;&amp;#x5BF9;&amp;#x8">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-10T12:53:03.678Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Ancrazyking/MdImage/master/IOCInit.png">
+<meta property="og:updated_time" content="2018-11-11T04:12:49.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring相关">
 <meta name="twitter:description" content="Spring Bean&amp;#x5728;Spring&amp;#x4E2D;,&amp;#x90A3;&amp;#x4E9B;&amp;#x7EC4;&amp;#x6210;&amp;#x5E94;&amp;#x7528;&amp;#x7A0B;&amp;#x5E8F;&amp;#x4E3B;&amp;#x4F53;&amp;#x53CA;&amp;#x6709;Spring IOC&amp;#x5BB9;&amp;#x5668;&amp;#x6240;&amp;#x7BA1;&amp;#x7406;&amp;#x7684;&amp;#x5BF9;&amp;#x8">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Ancrazyking/MdImage/master/IOCInit.png">
 
     <script type="application/ld+json">
 {
@@ -128,7 +130,7 @@
     
     <a href="/index.html" class="item">
         <i class="home icon"></i>
-        首页
+        HOME
     </a>
 
     
@@ -172,12 +174,31 @@
 <li>session           -&gt;     HttpSession,&#x540C;&#x4E00;&#x4E2A;HttpSession&#x5171;&#x4EAB;&#x4E00;&#x4E2A;Bean,&#x4E0D;&#x540C;Session&#x4F7F;&#x7528;&#x4E0D;&#x540C;Bean.</li>
 <li>globalsession    -&gt;    </li>
 </ul>
-<h4 id="bena&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#bena&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="bena&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>bena&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h4><p>&#x53EF;&#x901A;&#x8FC7;bean&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;  init-method &#x548C; destory-method</p>
+<h4 id="bean&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#bean&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="bean&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>bean&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h4><p>&#x53EF;&#x901A;&#x8FC7;bean&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;  init-method &#x548C; destory-method</p>
 <ol class="ui list">
 <li>Spring&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;</li>
 <li>&#x4ECE;&#x5BB9;&#x5668;&#x4E2D;&#x83B7;&#x53D6;Bean</li>
 <li>Spring&#x5BB9;&#x5668;&#x5173;&#x95ED;</li>
 </ol>
+<hr>
+<h3 id="Spring-IOC&#x4E0E;AOP"><a href="#Spring-IOC&#x4E0E;AOP" class="headerlink" title="Spring IOC&#x4E0E;AOP"></a>Spring IOC&#x4E0E;AOP</h3><h4 id="IOC-&#x63A7;&#x5236;&#x53CD;&#x8F6C;"><a href="#IOC-&#x63A7;&#x5236;&#x53CD;&#x8F6C;" class="headerlink" title="IOC(&#x63A7;&#x5236;&#x53CD;&#x8F6C;)"></a>IOC(&#x63A7;&#x5236;&#x53CD;&#x8F6C;)</h4><p>&#x5C06;Java&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x6743;&#x4EA4;&#x7ED9;Spring&#x5BB9;&#x5668;,&#x800C;&#x4E0D;&#x662F;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;,&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x7531;Spring&#x7BA1;&#x7406;.</p>
+<ul class="ui list">
+<li>&#x5982;&#x4F55;&#x5B9E;&#x73B0;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//&#x8BFB;&#x53D6;xml&#x6587;&#x4EF6;,&#x901A;&#x8FC7;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x548C;Java&#x7684;&#x53CD;&#x5C04;&#x673A;&#x5236;,&#x5B9E;&#x73B0;&#x7A0B;&#x5E8F;&#x7684;&#x89E3;&#x8026;.</span><br><span class="line">// xml&#x6587;&#x4EF6;</span><br><span class="line">&lt;bean id=&quot;userService&quot; class=&quot;xx.xx.xx.UserServiceImpl&quot;/&gt;</span><br><span class="line"></span><br><span class="line">//&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</span><br><span class="line">@Test</span><br><span class="line">public void testIOC(){</span><br><span class="line">   ApplicationContext applicationContext=new ClasspathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">   UserService userService=(UserService)applicationContext.getBean(&quot;userService&quot;);</span><br><span class="line">   userService.save();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<ul class="ui list">
+<li>Spring IOC&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x7A0B;</li>
+</ul>
+<p><a class="magnific-img" href="https://raw.githubusercontent.com/Ancrazyking/MdImage/master/IOCInit.png"><img src="https://raw.githubusercontent.com/Ancrazyking/MdImage/master/IOCInit.png" alt="IOCInit.png" class="ui centered image"></a></p>
+<h4 id="AOP-&#x9762;&#x5411;&#x5207;&#x9762;&#x7F16;&#x7A0B;"><a href="#AOP-&#x9762;&#x5411;&#x5207;&#x9762;&#x7F16;&#x7A0B;" class="headerlink" title="AOP(&#x9762;&#x5411;&#x5207;&#x9762;&#x7F16;&#x7A0B;)"></a>AOP(&#x9762;&#x5411;&#x5207;&#x9762;&#x7F16;&#x7A0B;)</h4><p>&#x7528;&#x4E8E;&#x589E;&#x5F3A;&#x65B9;&#x6CD5;,&#x5728; <strong>&#x4E0D;&#x4FEE;&#x6539;&#x6E90;&#x4EE3;&#x7801;</strong> &#x7684;&#x60C5;&#x51B5;&#x4E0B;,&#x5BF9;&#x5176;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x589E;&#x5F3A;.</p>
+<ul class="ui list">
+<li><p>&#x601D;&#x60F3;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AOP&#x601D;&#x60F3;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x57FA;&#x4E8E;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;,Java&#x4E2D;&#x4E00;&#x822C;&#x91C7;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;.</span><br><span class="line">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x53EA;&#x80FD;&#x4EE3;&#x7406;&#x63A5;&#x53E3;&#x800C;&#x4E0D;&#x80FD;&#x4EE3;&#x7406;&#x7C7B;,Spring AOP&#x540C;&#x65F6;&#x652F;&#x6301;CgLib,Aspectj,JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;.</span><br><span class="line"></span><br><span class="line">&gt; &#x5982;&#x679C;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86;&#x63A5;&#x53E3;,Spring AOP&#x5C06;&#x4F1A;&#x91C7;&#x7528;JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6765;&#x5B9E;&#x73B0;AOP&#x4EE3;&#x7406;&#x7C7B;.</span><br><span class="line">&gt; &#x5982;&#x679C;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;,Spring AOP&#x5C06;&#x4F1A;&#x91C7;&#x7528;Cglib&#x6765;&#x751F;&#x6210;AOP&#x4EE3;&#x7406;&#x7C7B;.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x901A;&#x77E5;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Before</span><br><span class="line">After</span><br><span class="line">After-returning</span><br><span class="line">After-throwing</span><br><span class="line">Around</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
                         
                     </div>
@@ -250,7 +271,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#Spring-Bean"><span>Spring Bean</span></a><ol><li><a href="#bean的作用域-Scope-“singleton”"><span>bean的作用域(@Scope(“singleton”))</span></a></li><li><a href="#bena的生命周期"><span>bena的生命周期</span></a></li></ol></li></ol>
+                    <ol class="ui ordered list"><li><a href="#Spring-Bean"><span>Spring Bean</span></a><ol><li><a href="#bean的作用域-Scope-“singleton”"><span>bean的作用域(@Scope(“singleton”))</span></a></li><li><a href="#bean的生命周期"><span>bean的生命周期</span></a></li></ol></li><li><a href="#Spring-IOC与AOP"><span>Spring IOC与AOP</span></a><ol><li><a href="#IOC-控制反转"><span>IOC(控制反转)</span></a></li><li><a href="#AOP-面向切面编程"><span>AOP(面向切面编程)</span></a></li></ol></li></ol>
                 </div>
 
             </div>

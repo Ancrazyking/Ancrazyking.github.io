@@ -9,18 +9,24 @@
     <title>数据结构-链表 | Afeng&#39;s Blogs</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="&amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E0E;&amp;#x6570;&amp;#x7EC4;&amp;#x9700;&amp;#x8981;&amp;#x8FDE;&amp;#x7EED;&amp;#x7A7A;&amp;#x95F4;&amp;#x4E0D;&amp;#x540C;,&amp;#x94FE;&amp;#x8868;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x5185;&amp;#x5B58;&amp;#x4E2D;&amp;#x8FDE">
+    <meta name="description" content="&amp;#x6CE8;:&amp;#x56FE;&amp;#x7247;&amp;#x6E90;&amp;#x81EA;&amp;#x6781;&amp;#x5BA2;&amp;#x65F6;&amp;#x95F4;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x4E0E;&amp;#x7B97;&amp;#x6CD5;&amp;#x4E4B;&amp;#x7F8E;&amp;#x4E13;&amp;#x680F; &amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9">
 <meta name="keywords" content="数据结构-线性表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构-链表">
 <meta property="og:url" content="http://yoursite.com/2018/11/09/linklist/index.html">
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
-<meta property="og:description" content="&amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E0E;&amp;#x6570;&amp;#x7EC4;&amp;#x9700;&amp;#x8981;&amp;#x8FDE;&amp;#x7EED;&amp;#x7A7A;&amp;#x95F4;&amp;#x4E0D;&amp;#x540C;,&amp;#x94FE;&amp;#x8868;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x5185;&amp;#x5B58;&amp;#x4E2D;&amp;#x8FDE">
+<meta property="og:description" content="&amp;#x6CE8;:&amp;#x56FE;&amp;#x7247;&amp;#x6E90;&amp;#x81EA;&amp;#x6781;&amp;#x5BA2;&amp;#x65F6;&amp;#x95F4;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x4E0E;&amp;#x7B97;&amp;#x6CD5;&amp;#x4E4B;&amp;#x7F8E;&amp;#x4E13;&amp;#x680F; &amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-09T05:35:03.426Z">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/b9/eb/b93e7ade9bb927baad1348d9a806ddeb.jpg">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/45/17/452e943788bdeea462d364389bd08a17.jpg">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/86/55/86cb7dc331ea958b0a108b911f38d155.jpg">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/cb/0b/cbc8ab20276e2f9312030c313a9ef70b.jpg">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/d1/91/d1665043b283ecdf79b157cfc9e5ed91.jpg">
+<meta property="og:updated_time" content="2018-11-11T13:30:01.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构-链表">
-<meta name="twitter:description" content="&amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E0E;&amp;#x6570;&amp;#x7EC4;&amp;#x9700;&amp;#x8981;&amp;#x8FDE;&amp;#x7EED;&amp;#x7A7A;&amp;#x95F4;&amp;#x4E0D;&amp;#x540C;,&amp;#x94FE;&amp;#x8868;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x5185;&amp;#x5B58;&amp;#x4E2D;&amp;#x8FDE">
+<meta name="twitter:description" content="&amp;#x6CE8;:&amp;#x56FE;&amp;#x7247;&amp;#x6E90;&amp;#x81EA;&amp;#x6781;&amp;#x5BA2;&amp;#x65F6;&amp;#x95F4;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x4E0E;&amp;#x7B97;&amp;#x6CD5;&amp;#x4E4B;&amp;#x7F8E;&amp;#x4E13;&amp;#x680F; &amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/b9/eb/b93e7ade9bb927baad1348d9a806ddeb.jpg">
 
     <script type="application/ld+json">
 {
@@ -128,7 +134,7 @@
     
     <a href="/index.html" class="item">
         <i class="home icon"></i>
-        首页
+        HOME
     </a>
 
     
@@ -163,36 +169,28 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        <h3 id="&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;"><a href="#&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;" class="headerlink" title="&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;"></a>&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;</h3><pre><code>&#x4E0E;&#x6570;&#x7EC4;&#x9700;&#x8981;&#x8FDE;&#x7EED;&#x7A7A;&#x95F4;&#x4E0D;&#x540C;,&#x94FE;&#x8868;&#x4E0D;&#x9700;&#x8981;&#x5185;&#x5B58;&#x4E2D;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;,&#x800C;&#x662F;&#x901A;&#x8FC7;&#x6307;&#x9488;&#x5C06;&#x4E00;&#x7EC4;&#x96F6;&#x6563;&#x7684;&#x5185;&#x5B58;&#x5757;&#x4E32;&#x8054;&#x8D77;&#x6765;&#x4F7F;&#x7528;.
-</code></pre><h3 id="&#x94FE;&#x8868;&#x7684;&#x5206;&#x7C7B;"><a href="#&#x94FE;&#x8868;&#x7684;&#x5206;&#x7C7B;" class="headerlink" title="&#x94FE;&#x8868;&#x7684;&#x5206;&#x7C7B;"></a>&#x94FE;&#x8868;&#x7684;&#x5206;&#x7C7B;</h3><h4 id="&#x5355;&#x94FE;&#x8868;"><a href="#&#x5355;&#x94FE;&#x8868;" class="headerlink" title="&#x5355;&#x94FE;&#x8868;"></a>&#x5355;&#x94FE;&#x8868;</h4><hr>
-<pre><code>&#x5355;&#x94FE;&#x8868;&#x5373;&#x94FE;&#x63A5;&#x65B9;&#x5411;&#x662F;&#x5355;&#x5411;&#x7684;,&#x7531;&#x82E5;&#x5E72;&#x4E2A;&#x8282;&#x70B9;,&#x6BCF;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x5305;&#x542B;&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6307;&#x9488;(next).
-</code></pre><ul class="ui list">
-<li>Java&#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x8282;&#x70B9;(&#x5355;&#x94FE;&#x8868;)</li>
+                        <p>&#x6CE8;:&#x56FE;&#x7247;&#x6E90;&#x81EA;&#x6781;&#x5BA2;&#x65F6;&#x95F4;&#x7684;<a href="https://time.geekbang.org/" target="_blank" rel="noopener">&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;&#x4E13;&#x680F;</a></p>
+<h3 id="&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;"><a href="#&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;" class="headerlink" title="&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;"></a>&#x94FE;&#x8868;&#x7684;&#x5B9A;&#x4E49;</h3><p>&#x4E0E;&#x6570;&#x7EC4;&#x9700;&#x8981;&#x8FDE;&#x7EED;&#x7A7A;&#x95F4;&#x4E0D;&#x540C;,&#x94FE;&#x8868;&#x4E0D;&#x9700;&#x8981;&#x5185;&#x5B58;&#x4E2D;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;,&#x800C;&#x662F;&#x901A;&#x8FC7;&#x6307;&#x9488;&#x5C06;&#x4E00;&#x7EC4;&#x96F6;&#x6563;&#x7684;&#x5185;&#x5B58;&#x5757;&#x4E32;&#x8054;&#x8D77;&#x6765;&#x4F7F;&#x7528;.</p>
+<hr>
+<h4 id="&#x5355;&#x94FE;&#x8868;"><a href="#&#x5355;&#x94FE;&#x8868;" class="headerlink" title="&#x5355;&#x94FE;&#x8868;"></a>&#x5355;&#x94FE;&#x8868;</h4><hr>
+<p>&#x94FE;&#x8868;&#x901A;&#x8FC7;&#x6307;&#x9488;&#x5C06;&#x4E00;&#x7EC4;&#x96F6;&#x6563;&#x7684;&#x5185;&#x5B58;&#x5757;&#x4E32;&#x8054;&#x5728;&#x4E00;&#x8D77;,&#x5176;&#x4E2D;,&#x6211;&#x4EEC;&#x628A;&#x5185;&#x5B58;&#x5757;&#x79F0;&#x4E3A;&#x94FE;&#x8868;&#x7684;&#x201D;&#x7ED3;&#x70B9;&#x201D;.<br><a class="magnific-img" href="https://static001.geekbang.org/resource/image/b9/eb/b93e7ade9bb927baad1348d9a806ddeb.jpg"><img src="https://static001.geekbang.org/resource/image/b9/eb/b93e7ade9bb927baad1348d9a806ddeb.jpg" alt="SingleLinkedList.jpg" class="ui centered image"></a></p>
+<p>&#x5355;&#x94FE;&#x8868;&#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x7ED3;&#x70B9;&#x662F;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;,&#x7B2C;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x548C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x5934;&#x7ED3;&#x70B9;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x94FE;&#x8868;&#x7684;&#x57FA;&#x5730;&#x5740;</span><br><span class="line">&#x5C3E;&#x7ED3;&#x70B9;&#x7684;next&#x6307;&#x9488;&#x57DF;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x7A7A;&#x5730;&#x5740;NULL.</span><br></pre></td></tr></table></figure></p>
+<p>&#x94FE;&#x8868;&#x652F;&#x6301;&#x6570;&#x636E;&#x7684;&#x67E5;&#x627E;&#x3001; &#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x64CD;&#x4F5C;<br><a class="magnific-img" href="https://static001.geekbang.org/resource/image/45/17/452e943788bdeea462d364389bd08a17.jpg"><img src="https://static001.geekbang.org/resource/image/45/17/452e943788bdeea462d364389bd08a17.jpg" alt="linkedlist.jpg" class="ui centered image"></a></p>
+<h4 id="&#x5FAA;&#x73AF;&#x94FE;&#x8868;"><a href="#&#x5FAA;&#x73AF;&#x94FE;&#x8868;" class="headerlink" title="&#x5FAA;&#x73AF;&#x94FE;&#x8868;"></a>&#x5FAA;&#x73AF;&#x94FE;&#x8868;</h4><hr>
+<p>&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x5355;&#x94FE;&#x8868;,&#x4E0E;&#x5355;&#x94FE;&#x8868;&#x552F;&#x4E00;&#x7684;&#x533A;&#x522B;&#x5C31;&#x662F;&#x5C3E;&#x7ED3;&#x70B9;.<br>&#x5355;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x7ED3;&#x70B9;&#x6307;&#x5411;NULL&#x7A7A;&#x5730;&#x5740;,&#x800C;&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#x7684; <em>&#x5C3E;&#x7ED3;&#x70B9;&#x6307;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5934;&#x7ED3;&#x70B9;</em>.<br><a class="magnific-img" href="https://static001.geekbang.org/resource/image/86/55/86cb7dc331ea958b0a108b911f38d155.jpg"><img src="https://static001.geekbang.org/resource/image/86/55/86cb7dc331ea958b0a108b911f38d155.jpg" alt="CircularLinkedList.jpg" class="ui centered image"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x4E0E;&#x5355;&#x94FE;&#x8868;&#x76F8;&#x6BD4;,&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#x7684;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x5177;&#x6709;&#x73AF;&#x5F62;&#x7ED3;&#x6784;&#x7684;&#x6570;&#x636E;(&#x7EA6;&#x745F;&#x592B;&#x73AF;&#x7684;&#x95EE;&#x9898;).</span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x53CC;-&#x5411;-&#x94FE;&#x8868;"><a href="#&#x53CC;-&#x5411;-&#x94FE;&#x8868;" class="headerlink" title="&#x53CC;(&#x5411;)&#x94FE;&#x8868;"></a>&#x53CC;(&#x5411;)&#x94FE;&#x8868;</h4><hr>
+<p>&#x5355;&#x94FE;&#x8868;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x5411;,&#x7ED3;&#x70B9;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x540E;&#x7EE7;&#x6307;&#x9488;next&#x6307;&#x5411;&#x540E;&#x9762;&#x7684;&#x7ED3;&#x70B9;.&#x800C;&#x53CC;&#x5411;&#x7ED3;&#x70B9;&#x6709;&#x4E24;&#x4E2A;&#x6307;&#x9488;,&#x524D;&#x9A71;&#x6307;&#x9488; <strong>previous</strong> &#x548C;&#x540E;&#x7EE7;&#x6307;&#x9488; <strong>next</strong> .<br><a class="magnific-img" href="https://static001.geekbang.org/resource/image/cb/0b/cbc8ab20276e2f9312030c313a9ef70b.jpg"><img src="https://static001.geekbang.org/resource/image/cb/0b/cbc8ab20276e2f9312030c313a9ef70b.jpg" alt="DoubleLinkedList.jpg" class="ui centered image"></a></p>
+<h4 id="&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x94FE;&#x8868;"><a href="#&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x94FE;&#x8868;" class="headerlink" title="&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x94FE;&#x8868;"></a>&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x94FE;&#x8868;</h4><hr>
+<p><a class="magnific-img" href="https://static001.geekbang.org/resource/image/d1/91/d1665043b283ecdf79b157cfc9e5ed91.jpg"><img src="https://static001.geekbang.org/resource/image/d1/91/d1665043b283ecdf79b157cfc9e5ed91.jpg" alt="CircularDoubleLinkedList.jpg" class="ui centered image"></a></p>
+<h3 id="&#x94FE;&#x8868;&#x4E0E;&#x6570;&#x7EC4;&#x7684;&#x6027;&#x80FD;"><a href="#&#x94FE;&#x8868;&#x4E0E;&#x6570;&#x7EC4;&#x7684;&#x6027;&#x80FD;" class="headerlink" title="&#x94FE;&#x8868;&#x4E0E;&#x6570;&#x7EC4;&#x7684;&#x6027;&#x80FD;"></a>&#x94FE;&#x8868;&#x4E0E;&#x6570;&#x7EC4;&#x7684;&#x6027;&#x80FD;</h3><ul class="ui list">
+<li><p>&#x6570;&#x7EC4;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x63D2;&#x5165;&#x5220;&#x9664; O(n)  </span><br><span class="line">&#x968F;&#x673A;&#x8BBF;&#x95EE; O(1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x94FE;&#x8868;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x63D2;&#x5165;&#x5220;&#x9664; O(1)</span><br><span class="line">&#x968F;&#x673A;&#x8BBF;&#x95EE; O(n)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Node{</span><br><span class="line">    int data;//&#x6570;&#x636E;&#x57DF;</span><br><span class="line">    Node next; //&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6307;&#x9488;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<ul class="ui list">
-<li><p>&#x5355;&#x94FE;&#x8868;&#x7279;&#x70B9;</p>
-<pre><code>&#x8282;&#x70B9;&#x7684;&#x589E;&#x52A0;&#x548C;&#x5220;&#x9664;&#x5FEB; O(1),&#x76F4;&#x63A5;&#x6539;&#x53D8;&#x6307;&#x9488;&#x6307;&#x5411;&#x5373;&#x53EF;.
-&#x5355;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x987A;&#x5E8F;&#x8BBF;&#x95EE;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x904D;&#x5386;,&#x987A;&#x5E8F;&#x8BBF;&#x95EE;,&#x590D;&#x6742;&#x5EA6;O(n).
-</code></pre></li>
-</ul>
-<ul class="ui list">
-<li>&#x5355;&#x94FE;&#x8868;&#x5E38;&#x7528;&#x64CD;&#x4F5C;</li>
-</ul>
-<ol class="ui list">
-<li>&#x5934;&#x8282;&#x70B9;&#x63D2;&#x5165;</li>
-<li>&#x5934;&#x8282;&#x70B9;&#x5220;&#x9664;</li>
-<li>&#x4EFB;&#x610F;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x4E0E;&#x5220;&#x9664;</li>
-</ol>
-<h4 id="&#x5FAA;&#x73AF;&#x94FE;&#x8868;-&#x7EA6;&#x745F;&#x592B;&#x73AF;&#x7684;&#x95EE;&#x9898;"><a href="#&#x5FAA;&#x73AF;&#x94FE;&#x8868;-&#x7EA6;&#x745F;&#x592B;&#x73AF;&#x7684;&#x95EE;&#x9898;" class="headerlink" title="&#x5FAA;&#x73AF;&#x94FE;&#x8868;(&#x7EA6;&#x745F;&#x592B;&#x73AF;&#x7684;&#x95EE;&#x9898;)"></a>&#x5FAA;&#x73AF;&#x94FE;&#x8868;(&#x7EA6;&#x745F;&#x592B;&#x73AF;&#x7684;&#x95EE;&#x9898;)</h4><hr>
-<pre><code>&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#x5373;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x8282;&#x70B9;&#x6307;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5934;&#x8282;&#x70B9;.
-</code></pre><h4 id="&#x53CC;&#x5411;&#x94FE;&#x8868;"><a href="#&#x53CC;&#x5411;&#x94FE;&#x8868;" class="headerlink" title="&#x53CC;&#x5411;&#x94FE;&#x8868;"></a>&#x53CC;&#x5411;&#x94FE;&#x8868;</h4><hr>
-<pre><code>&#x53CC;&#x94FE;&#x8868;&#x5373;&#x94FE;&#x63A5;&#x65B9;&#x5411;&#x662F;&#x53CC;&#x5411;&#x7684;,&#x82E5;&#x5E72;&#x4E2A;&#x8282;&#x70B9;,&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x5305;&#x542B;&#x6307;&#x5411;&#x524D;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;q&#x524D;&#x9A71;&#x6307;&#x9488;(prev)&#x548C;&#x6307;&#x5411;&#x540E;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x540E;&#x7EE7;&#x6307;&#x9488;(next).
-</code></pre><ul class="ui list">
-<li>Java&#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x8282;&#x70B9;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class  Node{</span><br><span class="line">    int data;  //&#x6570;&#x636E;&#x57DF;</span><br><span class="line">    Node prev;  //&#x524D;&#x9A71;&#x6307;&#x9488;</span><br><span class="line">    Node next;  //&#x540E;&#x7EE7;&#x6307;&#x9488;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
+<h3 id="&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;-Java&#x8BED;&#x8A00;"><a href="#&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;-Java&#x8BED;&#x8A00;" class="headerlink" title="&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;(Java&#x8BED;&#x8A00;)"></a><a href="https://github.com/Ancrazyking/DataStructureAndAlgorithm" target="_blank" rel="noopener">&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;(Java&#x8BED;&#x8A00;)</a></h3>
                         
                     </div>
 
@@ -264,7 +262,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#链表的定义"><span>链表的定义</span></a></li><li><a href="#链表的分类"><span>链表的分类</span></a><ol><li><a href="#单链表"><span>单链表</span></a></li><li><a href="#循环链表-约瑟夫环的问题"><span>循环链表(约瑟夫环的问题)</span></a></li><li><a href="#双向链表"><span>双向链表</span></a></li></ol></li></ol>
+                    <ol class="ui ordered list"><li><a href="#链表的定义"><span>链表的定义</span></a><ol><li><a href="#单链表"><span>单链表</span></a></li><li><a href="#循环链表"><span>循环链表</span></a></li><li><a href="#双-向-链表"><span>双(向)链表</span></a></li><li><a href="#双向循环链表"><span>双向循环链表</span></a></li></ol></li><li><a href="#链表与数组的性能"><span>链表与数组的性能</span></a></li><li><a href="#部分代码实现-Java语言"><span>部分代码实现(Java语言)</span></a></li></ol>
                 </div>
 
             </div>
