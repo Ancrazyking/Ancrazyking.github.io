@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>MapReduce | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="1.MapReduce&amp;#x6982;&amp;#x8FF0; MapReduce&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x8FD0;&amp;#x7B97;&amp;#x7A0B;&amp;#x5E8F;&amp;#x7684;&amp;#x7F16;&amp;#x7A0B;&amp;#x6846;&amp;#x67B6;,&amp;#x662F;&amp;#x7528;&amp;#x6237;&amp;#x5F00;&amp;#x53D1;&amp;#">
+<meta name="keywords" content="分布式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MapReduce">
+<meta property="og:url" content="http://yoursite.com/2018/11/14/MapReduce/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="1.MapReduce&amp;#x6982;&amp;#x8FF0; MapReduce&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x8FD0;&amp;#x7B97;&amp;#x7A0B;&amp;#x5E8F;&amp;#x7684;&amp;#x7F16;&amp;#x7A0B;&amp;#x6846;&amp;#x67B6;,&amp;#x662F;&amp;#x7528;&amp;#x6237;&amp;#x5F00;&amp;#x53D1;&amp;#">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx7vkj3zj5j30xy0kmq42.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx7ydh6l3nj30rq0h00tg.jpg">
+<meta property="og:updated_time" content="2018-11-14T14:27:18.040Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MapReduce">
+<meta name="twitter:description" content="1.MapReduce&amp;#x6982;&amp;#x8FF0; MapReduce&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x5206;&amp;#x5E03;&amp;#x5F0F;&amp;#x8FD0;&amp;#x7B97;&amp;#x7A0B;&amp;#x5E8F;&amp;#x7684;&amp;#x7F16;&amp;#x7A0B;&amp;#x6846;&amp;#x67B6;,&amp;#x662F;&amp;#x7528;&amp;#x6237;&amp;#x5F00;&amp;#x53D1;&amp;#">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx7vkj3zj5j30xy0kmq42.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Student/ Code Farmer
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-MapReduce" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    MapReduce
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="1-MapReduce&#x6982;&#x8FF0;"><a href="#1-MapReduce&#x6982;&#x8FF0;" class="headerlink" title="1.MapReduce&#x6982;&#x8FF0;"></a>1.MapReduce&#x6982;&#x8FF0;</h3><hr>
+<p style="text-indent:2em">MapReduce&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x8FD0;&#x7B97;&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x7A0B;&#x6846;&#x67B6;,&#x662F;&#x7528;&#x6237;&#x5F00;&#x53D1;&#x7684; <strong>&#x201C;&#x57FA;&#x4E8E;Hadoop&#x7684;&#x6570;&#x636E;&#x5206;&#x6790;&#x5E94;&#x7528;&#x201D;</strong> &#x7684;&#x6838;&#x5FC3;&#x6846;&#x67B6;.<br></p><br><p style="text-indent:2em"><br>MapReduce&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x662F;&#x5C06;&#x7528;&#x6237;&#x7F16;&#x5199;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4EE3;&#x7801;&#x548C;&#x81EA;&#x5E26;&#x7684;&#x9ED8;&#x8BA4;&#x7EC4;&#x4EF6;&#x6574;&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8FD0;&#x7B97;&#x7A0B;&#x5E8F;,&#x5E76;&#x5728;Hadoop&#x96C6;&#x7FA4;&#x4E0A;&#x8FD0;&#x884C;.<br></p>
+
+<h3 id="2-MapReduce&#x6846;&#x67B6;&#x7684;&#x7ED3;&#x6784;&#x53CA;&#x6838;&#x5FC3;&#x8FD0;&#x884C;&#x673A;&#x5236;"><a href="#2-MapReduce&#x6846;&#x67B6;&#x7684;&#x7ED3;&#x6784;&#x53CA;&#x6838;&#x5FC3;&#x8FD0;&#x884C;&#x673A;&#x5236;" class="headerlink" title="2.MapReduce&#x6846;&#x67B6;&#x7684;&#x7ED3;&#x6784;&#x53CA;&#x6838;&#x5FC3;&#x8FD0;&#x884C;&#x673A;&#x5236;"></a>2.MapReduce&#x6846;&#x67B6;&#x7684;&#x7ED3;&#x6784;&#x53CA;&#x6838;&#x5FC3;&#x8FD0;&#x884C;&#x673A;&#x5236;</h3><hr>
+<p>&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;MapReduce&#x7A0B;&#x5E8F;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x8FD0;&#x884C;&#x65F6;&#x6709;&#x4E09;&#x7C7B;&#x5B9E;&#x4F8B;&#x8FDB;&#x7A0B;:</p>
+<ol class="ui list">
+<li>MRAppMaster: &#x8D1F;&#x8D23;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x8FC7;&#x7A0B; <strong>&#x8C03;&#x5EA6;&#x53CA;</strong> &#x72B6;&#x6001; <strong>&#x534F;&#x8C03;</strong> .</li>
+<li>MapTask:&#x8D1F;&#x8D23;map&#x9636;&#x6BB5;&#x7684;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;.</li>
+<li>ReduceTask:&#x8D1F;&#x8D23;reduce&#x9636;&#x6BB5;&#x7684;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;.</li>
+</ol>
+<h4 id="2-1-&#x5B8C;&#x6574;&#x6D41;&#x7A0B;"><a href="#2-1-&#x5B8C;&#x6574;&#x6D41;&#x7A0B;" class="headerlink" title="2.1 &#x5B8C;&#x6574;&#x6D41;&#x7A0B;"></a>2.1 &#x5B8C;&#x6574;&#x6D41;&#x7A0B;</h4><p><a class="magnific-img" href="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx7vkj3zj5j30xy0kmq42.jpg"><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fx7vkj3zj5j30xy0kmq42.jpg" alt="mapreduce&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x6D41;&#x7A0B;.png" class="ui centered image"></a></p>
+<h4 id="2-2-&#x6D41;&#x7A0B;&#x89E3;&#x6790;"><a href="#2-2-&#x6D41;&#x7A0B;&#x89E3;&#x6790;" class="headerlink" title="2.2 &#x6D41;&#x7A0B;&#x89E3;&#x6790;"></a>2.2 &#x6D41;&#x7A0B;&#x89E3;&#x6790;</h4><ol class="ui list">
+<li>&#x4E00;&#x4E2A;mr&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;,&#x6700;&#x5148;&#x542F;&#x52A8;MRAppMaster, <strong>MRAppMaster</strong> &#x542F;&#x52A8;&#x540E;&#x6839;&#x636E;&#x672C;&#x6B21;job&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;,&#x8BA1;&#x7B97;&#x51FA;&#x9700;&#x8981;&#x7684;MapTask&#x5B9E;&#x4F8B;&#x7684;&#x6570;&#x91CF;,&#x7136;&#x540E;&#x5411;&#x96C6;&#x7FA4;&#x7533;&#x8BF7;&#x673A;&#x5668;&#x542F;&#x52A8;&#x76F8;&#x5E94;&#x6570;&#x91CF;&#x7684;MapTask&#x8FDB;&#x7A0B;.</li>
+<li><p>MapTask&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x4E4B;&#x540E;,&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x7684;&#x6570;&#x636E;&#x5207;&#x7247;&#x8303;&#x56F4;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5904;&#x7406;,&#x4E3B;&#x4F53;&#x6D41;&#x7A0B;&#x4E3A;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a) &#x5229;&#x7528;&#x5BA2;&#x6237;&#x6307;&#x5B9A;&#x7684;inputformat&#x6765;&#x83B7;&#x53D6;RecordReader&#x8BFB;&#x53D6;&#x6570;&#x636E;,&#x5F62;&#x6210;&#x8F93;&#x5165;KV&#x5BF9;</span><br><span class="line">b) &#x5C06;&#x8F93;&#x5165;KV&#x5BF9;&#x4F20;&#x9012;&#x7ED9;MR&#x7A0B;&#x5E8F;&#x5B9A;&#x4E49;&#x7684;map()&#x65B9;&#x6CD5;,&#x505A;&#x903B;&#x8F91;&#x8FD0;&#x7B97;,&#x5E76;&#x5C06;map()&#x65B9;&#x6CD5;&#x8F93;&#x51FA;&#x7684;KV&#x5BF9;&#x6536;&#x96C6;&#x5230;&#x7F13;&#x5B58;</span><br><span class="line">c) &#x5C06;&#x7F13;&#x5B58;&#x4E2D;&#x7684;KV&#x5BF9;&#x5B89;&#x88C5;K( __Key__ )&#x5206;&#x533A;&#x6392;&#x5E8F;&#x540E;&#x4E0D;&#x65AD; __&#x6EA2;&#x5199;__ &#x5230;&#x78C1;&#x76D8;&#x6587;&#x4EF6;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MRAppMaster&#x76D1;&#x63A7;&#x5230;&#x6240;&#x6709;MapTask&#x8FDB;&#x7A0B;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x4E4B;&#x540E;,&#x4F1A;&#x6839;&#x636E;MR&#x7A0B;&#x5E8F;&#x6307;&#x5B9A;&#x7684;&#x53C2;&#x6570;&#x542F;&#x52A8;&#x76F8;&#x5E94;&#x6570;&#x91CF;&#x7684;ReduceTask(setReduceTaskNum)&#x8FDB;&#x7A0B;,&#x5E76;&#x544A;&#x77E5;reducetask&#x8FDB;&#x7A0B;&#x8981;&#x5904;&#x7406;&#x7684;&#x6570;&#x636E;&#x8303;&#x56F4;(&#x6307;&#x5B9A;&#x5206;&#x533A;Partitioner,&#x9ED8;&#x8BA4;&#x662F;Hash).</p>
+</li>
+<li>Reducetask&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x540E;,&#x6839;&#x636E;MRAppMaster&#x544A;&#x77E5;&#x5F85;&#x5904;&#x7406;&#x6570;&#x636E;&#x6240;&#x5728;&#x4F4D;&#x7F6E;,&#x4ECE;&#x82E5;&#x5E72;&#x53F0;MapTask&#x8FD0;&#x884C;&#x6240;&#x5728;&#x673A;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#x82E5;&#x5E72;&#x4E2A;MapTask&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x6587;&#x4EF6;,&#x5E76;&#x5728;&#x672C;&#x5730;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5F52;&#x5E76;&#x6392;&#x5E8F;,&#x7136;&#x540E;&#x6309;&#x7167;&#x76F8;&#x540C;key&#x7684;KV&#x4E3A;&#x4E00;&#x7EC4;,&#x7528;MR&#x7A0B;&#x5E8F;&#x5B9A;&#x4E49;&#x7684;reduce()&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x903B;&#x8F91;&#x8FD0;&#x7B97;,&#x5E76;&#x6536;&#x96C6;&#x8FD0;&#x7B97;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;KV,&#x8BA9;&#x540E;&#x8C03;&#x7528;&#x5BA2;&#x6237;&#x6307;&#x5B9A;&#x7684;outputformat&#x5C06;&#x7ED3;&#x679C;&#x6570;&#x636E;&#x8F93;&#x51FA;&#x5230;&#x5916;&#x90E8;&#x5B58;&#x50A8;.</li>
+</ol>
+<h4 id="2-3-MapTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;"><a href="#2-3-MapTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;" class="headerlink" title="2.3 MapTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;"></a>2.3 MapTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;</h4><p style="text-indent:2em">&#x4E00;&#x4E2A;job&#x7684;map&#x9636;&#x6BB5;&#x5E76;&#x884C;&#x5EA6;&#x7531;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x63D0;&#x4EA4;job&#x65F6;&#x51B3;&#x5B9A;;<br>&#x800C;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;map&#x9636;&#x6BB5;&#x5E76;&#x884C;&#x5EA6;&#x7684;&#x89C4;&#x5212;&#x7684;&#x57FA;&#x672C;&#x903B;&#x8F91;&#x4E3A;:<br></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x5C06;&#x5F85;&#x5904;&#x7406;&#x6570;&#x636E;&#x6267;&#x884C;&#x903B;&#x8F91;&#x5207;&#x7247;(&#x5373;&#x6309;&#x7167;&#x4E00;&#x4E2A;[&#x7279;&#x5B9A;&#x5207;&#x7247;]&#x5927;&#x5C0F;,&#x5C06;&#x5F85;&#x5904;&#x7406;&#x6570;&#x636E;&#x5212;&#x5206;&#x6210;&#x903B;&#x8F91;&#x4E0A;&#x7684;&#x591A;&#x4E2A;split),&#x7136;&#x540E;&#x6BCF;&#x4E00;&#x4E2A;split&#x5206;&#x914D;&#x4E00;&#x4E2A;MapTask&#x5E76;&#x884C;&#x5B9E;&#x4F8B;&#x5904;&#x7406;.</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">&#x8FD9;&#x6BB5;&#x903B;&#x8F91;&#x53CA;&#x5F62;&#x6210;&#x7684;&#x5207;&#x7247;&#x89C4;&#x5212;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;,&#x7531;FileInputFormat&#x5B9E;&#x73B0;&#x7C7B;&#x7684;getSplits()&#x65B9;&#x6CD5;&#x5B8C;&#x6210;,&#x5176;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x56FE;:<br></p>
+
+<p><a class="magnific-img" href="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx7ydh6l3nj30rq0h00tg.jpg"><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx7ydh6l3nj30rq0h00tg.jpg" alt="map&#x4EFB;&#x52A1;&#x5206;&#x7247;&#x673A;&#x5236;.png" class="ui centered image"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FileInputFormat&#x5207;&#x7247;&#x673A;&#x5236;&#x9ED8;&#x8BA4;&#x5757;&#x4E3A;128M</span><br><span class="line">&#x5047;&#x8BBE;&#x5F85;&#x5904;&#x7406;&#x6570;&#x636E;&#x6709;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;:</span><br><span class="line">        file1.txt  320M</span><br><span class="line">        file2.txt  10M</span><br><span class="line">&#x7ECF;&#x8FC7;FileInputFormat&#x7684;&#x5207;&#x7247;&#x673A;&#x5236;&#x8FD0;&#x7B97;&#x540E;,&#x5F62;&#x6210;&#x7684;&#x5207;&#x7247;&#x4FE1;&#x606F;&#x5982;&#x4E0B;:</span><br><span class="line">        file1.txt.split1   0-128</span><br><span class="line">        file2.txt.split2   128-256</span><br><span class="line">        file3.txt.split3   256-320</span><br><span class="line">        file2.txt.split1   0-10</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-ReduceTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;"><a href="#2-4-ReduceTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;" class="headerlink" title="2.4 ReduceTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;"></a>2.4 ReduceTask&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;</h4><p style="text-indent:2em"><br>ReduceTask&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x4E0E;MapTask&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x4E0D;&#x540C;,ReduceTask&#x6570;&#x91CF;&#x7684;&#x51B3;&#x5B9A;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;:<br></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    //&#x9ED8;&#x8BA4;&#x503C;&#x662F;1,&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x4E3A;4</span><br><span class="line">    job.setNumReduceTasks(4);</span><br><span class="line"></span><br><span class="line">    ReduceTask&#x6570;&#x91CF;&#x5E76;&#x4E0D;&#x662F;&#x4EFB;&#x610F;&#x8BBE;&#x7F6E;,&#x8FD8;&#x9700;&#x8003;&#x8651;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x9700;&#x6C42;,&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;,&#x9700;&#x8981;&#x6280;&#x672F;&#x5168;&#x5C40;&#x6C47;&#x603B;&#x7ED3;&#x679C;&#x65F6;,</span><br><span class="line">&#x5C31;&#x53EA;&#x80FD;&#x6709;1&#x4E2A;ReduceTask;</span><br><span class="line"></span><br><span class="line">    &#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x8FD0;&#x884C;&#x592A;&#x591A;&#x7684;ReduceTask.&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;job&#x6765;&#x8BF4;,&#x6700;&#x597D;Reduce&#x7684;&#x4E2A;&#x6570;&#x6700;&#x591A;&#x548C;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;Reduce&#x6301;&#x5E73;,&#x6216;&#x8005;&#x6BD4;&#x96C6;&#x7FA4;&#x7684;Reduce Slots&#x5C0F;.</span><br></pre></td></tr></table></figure>
+<p> <strong>&#x5982;&#x679C;&#x6570;&#x636E;&#x5206;&#x914D;&#x4E0D;&#x5747;&#x5300;,&#x5C31;&#x53EF;&#x80FD;&#x5728;reduce&#x9636;&#x6BB5;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x503E;&#x659C;</strong>.</p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-14T12:30:14.909Z" itemprop="datePublished">2018-11-14</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/分布式/">分布式</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/12/计算机网络/" class="ui tiny button">
+                    
+                    计算机网络
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#1-MapReduce概述"><span>1.MapReduce概述</span></a></li><li><a href="#2-MapReduce框架的结构及核心运行机制"><span>2.MapReduce框架的结构及核心运行机制</span></a><ol><li><a href="#2-1-完整流程"><span>2.1 完整流程</span></a></li><li><a href="#2-2-流程解析"><span>2.2 流程解析</span></a></li><li><a href="#2-3-MapTask并行度决定机制"><span>2.3 MapTask并行度决定机制</span></a></li><li><a href="#2-4-ReduceTask并行度决定机制"><span>2.4 ReduceTask并行度决定机制</span></a></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
