@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>Learning Scala | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="Scala&amp;#x6982;&amp;#x8FF0;1. Scala&amp;#x4E2D;&amp;#x53D8;&amp;#x91CF;,&amp;#x57FA;&amp;#x672C;&amp;#x6570;&amp;#x636E;&amp;#x7C7B;&amp;#x578B;  val &amp;#x4E0E; var &amp;#x53D8;&amp;#x91CF;&amp;#x7C7B;&amp;#x578B;&amp;#x63A8;&amp;#x65AD;,&amp;#x7F16;&amp;#x8BD1;&amp;#x5668;&amp;#x81E">
+<meta name="keywords" content="Scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning Scala">
+<meta property="og:url" content="http://yoursite.com/2018/11/15/LearningScala/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="Scala&amp;#x6982;&amp;#x8FF0;1. Scala&amp;#x4E2D;&amp;#x53D8;&amp;#x91CF;,&amp;#x57FA;&amp;#x672C;&amp;#x6570;&amp;#x636E;&amp;#x7C7B;&amp;#x578B;  val &amp;#x4E0E; var &amp;#x53D8;&amp;#x91CF;&amp;#x7C7B;&amp;#x578B;&amp;#x63A8;&amp;#x65AD;,&amp;#x7F16;&amp;#x8BD1;&amp;#x5668;&amp;#x81E">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx91o7jmo7j30s607emxa.jpg">
+<meta property="og:updated_time" content="2018-11-15T13:02:03.095Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learning Scala">
+<meta name="twitter:description" content="Scala&amp;#x6982;&amp;#x8FF0;1. Scala&amp;#x4E2D;&amp;#x53D8;&amp;#x91CF;,&amp;#x57FA;&amp;#x672C;&amp;#x6570;&amp;#x636E;&amp;#x7C7B;&amp;#x578B;  val &amp;#x4E0E; var &amp;#x53D8;&amp;#x91CF;&amp;#x7C7B;&amp;#x578B;&amp;#x63A8;&amp;#x65AD;,&amp;#x7F16;&amp;#x8BD1;&amp;#x5668;&amp;#x81E">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx91o7jmo7j30s607emxa.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Student/ Code Farmer
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Shanghai</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        首页
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-LearningScala" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Learning Scala
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="Scala&#x6982;&#x8FF0;"><a href="#Scala&#x6982;&#x8FF0;" class="headerlink" title="Scala&#x6982;&#x8FF0;"></a>Scala&#x6982;&#x8FF0;</h3><h4 id="1-Scala&#x4E2D;&#x53D8;&#x91CF;-&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;"><a href="#1-Scala&#x4E2D;&#x53D8;&#x91CF;-&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="1. Scala&#x4E2D;&#x53D8;&#x91CF;,&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>1. Scala&#x4E2D;&#x53D8;&#x91CF;,&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</h4><hr>
+<ul class="ui list">
+<li>val &#x4E0E; var</li>
+<li><p>&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x63A8;&#x65AD;,&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x5224;&#x65AD;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//val&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x540E;&#x4E0D;&#x53EF;&#x6539;&#x53D8;</span><br><span class="line">val name=&quot;wangafeng&quot;</span><br><span class="line">val name:String=&quot;wangafeng&quot;</span><br><span class="line">//var&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x540E;&#x53EF;&#x4EE5;&#x6539;&#x53D8;</span><br><span class="line">// name=&quot;afengwang&quot;  &#x7F16;&#x8BD1;&#x5668;&#x62A5;&#x9519;</span><br><span class="line"></span><br><span class="line">var name=&quot;wangafeng&quot;</span><br><span class="line">var name:String=&quot;wangafeng&quot;</span><br><span class="line">name=&quot;afengwang&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Scala&#x4E2D;&#x4E0E;Java&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E00;&#x81F4;,&#x533A;&#x522B;&#x662F;&#x65E0; <em>&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</em> &#x7684;&#x533A;&#x522B;.</p>
+</li>
+<li>Scala&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x9996;&#x5B57;&#x6BCD;&#x5FC5;&#x987B;&#x5927;&#x5199;</li>
+<li><p>&#x6240;&#x6709;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x7684;&#x7236;&#x7C7B;&#x662F; <strong>AnyVal</strong> , &#x6240;&#x6709;&#x7C7B;&#x7684;&#x7236;&#x7C7B;&#x662F; <strong>Any</strong> (&#x7C7B;&#x4F3C;Java&#x4E2D;&#x7684;Object),AnyVal&#x7684;&#x7236;&#x7C7B;&#x4E5F;&#x662F;Any.</p>
+</li>
+<li><p>&#x9690;&#x5F0F;&#x8F6C;&#x6362;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val name=&quot;wangafeng&quot;</span><br><span class="line">println(&quot;my name is ${name}&quot;) //&#x9690;&#x5F0F;&#x8F6C;&#x6362;  &#x5E95;&#x5C42;&#x8C03;&#x7528;s&#x65B9;&#x6CD5;,idea&#x4F1A;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x524D;&#x52A0;s</span><br><span class="line"></span><br><span class="line">//&#x61D2;&#x52A0;&#x8F7D;</span><br><span class="line">lazy val name=&quot;wangafeng&quot;</span><br><span class="line">println(name)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>return &#x8FD4;&#x56DE;&#x503C;:Scala&#x4E2D;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5C31;&#x662F;&#x6700;&#x540E;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;</p>
+</li>
+<li>lazy  &#x61D2;&#x52A0;&#x8F7D;:&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x65F6;&#x624D;&#x4F1A;&#x53BB;&#x521D;&#x59CB;&#x5316;</li>
+</ul>
+<h5 id="1-1-Scala&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x7B26;"><a href="#1-1-Scala&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="1.1 Scala&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x7B26;"></a>1.1 Scala&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x7B26;</h5><p>&#x4E0E;java&#x7C7B;&#x4F3C;,&#x7279;&#x6B8A;&#x7684;&#x5730;&#x65B9;&#x5982;&#x4E0B;:</p>
+<ol class="ui list">
+<li>&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</li>
+<li>&#x4E0D;&#x652F;&#x6301;&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;</li>
+<li>&#x4E0D;&#x652F;&#x6301; &#x2013;  ++</li>
+<li>&#x9664;&#x4E86;:&#x64CD;&#x4F5C;&#x7B26;,&#x5176;&#x4ED6;&#x90FD;&#x662F;&#x4ECE;&#x5DE6;&#x5F80;&#x53F3;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span><br><span class="line">val a=10</span><br><span class="line">val b=20</span><br><span class="line">val c=a.+(b) //val c=a+b</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="2-&#x7A0B;&#x5E8F;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#x7ED3;&#x6784;"><a href="#2-&#x7A0B;&#x5E8F;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#x7ED3;&#x6784;" class="headerlink" title="2. &#x7A0B;&#x5E8F;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#x7ED3;&#x6784;"></a>2. &#x7A0B;&#x5E8F;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#x7ED3;&#x6784;</h4><hr>
+<h5 id="2-1-&#x6761;&#x4EF6;&#x5224;&#x65AD;"><a href="#2-1-&#x6761;&#x4EF6;&#x5224;&#x65AD;" class="headerlink" title="2.1 &#x6761;&#x4EF6;&#x5224;&#x65AD;"></a>2.1 &#x6761;&#x4EF6;&#x5224;&#x65AD;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(Boolean_expression){</span><br><span class="line"></span><br><span class="line">}else if(Boolean_expression){</span><br><span class="line"></span><br><span class="line">}else{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-&#x5FAA;&#x73AF;"><a href="#2-2-&#x5FAA;&#x73AF;" class="headerlink" title="2.2 &#x5FAA;&#x73AF;"></a>2.2 &#x5FAA;&#x73AF;</h5><ul class="ui list">
+<li><p>while</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(condition){</span><br><span class="line">    conditional code;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>do-while</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">do{</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">}while(condition)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">for( i &lt;- 1 to 10){</span><br><span class="line">    println(i)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//for&#x5FAA;&#x73AF;&#x7684;&#x5B88;&#x62A4;&#x6A21;&#x5F0F;</span><br><span class="line">for(i &lt;- 1 to 10&gt; if i%2==0){</span><br><span class="line">    println(i)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//&#x6253;&#x5370;&#x4E5D;&#x4E5D;&#x4E58;&#x6CD5;&#x8868;</span><br><span class="line">for(i &lt;- 1 to 9;j &lt;- 1 to i){</span><br><span class="line">    print(&quot;...&quot;)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>break,continue,Scala&#x4E2D;&#x4E0D;&#x652F;&#x6301;.&#x9700;&#x8981;&#x5F15;&#x5165; <strong>Breaks</strong> &#x7C7B;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import scala.util.control.Breaks</span><br><span class="line">object App{</span><br><span class="line">    def main(args:Array[String]){</span><br><span class="line">        var a=0</span><br><span class="line">        val numList=1 to 10</span><br><span class="line">        val loop=new Breaks</span><br><span class="line">        loop.breakable{</span><br><span class="line">            for( a &lt;- numList ){</span><br><span class="line">                println(&quot;Value of a: ${a}&quot;)</span><br><span class="line"></span><br><span class="line">            }</span><br><span class="line">            if(a == 4){</span><br><span class="line"></span><br><span class="line">                loop.break</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        println(&quot;After the loop&quot;)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5FAA;&#x73AF;&#x8868;&#x8FBE;&#x5F0F;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Range&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x5F00;&#x533A;&#x95F4;;[ )    //Range&#x662F;&#x4E00;&#x4E2A;&#x7C7B;</span><br><span class="line">until&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x5F00;&#x533A;&#x95F4;;[ )    //until&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;</span><br><span class="line">to&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x95ED;&#x533A;&#x95F4;;   [ ]    //to&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a class="magnific-img" href="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx91o7jmo7j30s607emxa.jpg"><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fx91o7jmo7j30s607emxa.jpg" alt="&#x5FAA;&#x73AF;&#x8868;&#x8FBE;&#x5F0F;.png" class="ui centered image"></a></p>
+<ul class="ui list">
+<li>yield&#x5173;&#x952E;&#x5B57;,&#x57FA;&#x4E8E;&#x4E00;&#x4E2A;&#x5DF2;&#x6709;&#x7684;&#x96C6;&#x5408;&#x6765;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x96C6;&#x5408;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> val arrays=Array(&quot;hadoop&quot;,&quot;strom&quot;,&quot;spark&quot;)</span><br><span class="line">   </span><br><span class="line"> val arraysUpper= for(array &lt;- arrays) yield{</span><br><span class="line">      array.toUpperCase</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">println(arraysUpper.mkString(&quot;\t&quot;))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-&#x96C6;&#x5408;-Array-List-Set-Map-&#x4E0D;&#x53D8;&#x4E0E;&#x53EF;&#x53D8;&#x96C6;&#x5408;"><a href="#3-&#x96C6;&#x5408;-Array-List-Set-Map-&#x4E0D;&#x53D8;&#x4E0E;&#x53EF;&#x53D8;&#x96C6;&#x5408;" class="headerlink" title="3. &#x96C6;&#x5408;(Array List Set Map) &#x4E0D;&#x53D8;&#x4E0E;&#x53EF;&#x53D8;&#x96C6;&#x5408;"></a>3. &#x96C6;&#x5408;(Array List Set Map) &#x4E0D;&#x53D8;&#x4E0E;&#x53EF;&#x53D8;&#x96C6;&#x5408;</h4><hr>
+<h5 id="3-1-Tuple&#x5143;&#x7EC4;"><a href="#3-1-Tuple&#x5143;&#x7EC4;" class="headerlink" title="3.1 Tuple&#x5143;&#x7EC4;"></a>3.1 Tuple&#x5143;&#x7EC4;</h5><p style="text-indent:2em">&#x5143;&#x7EC4;&#x53EF;&#x4EE5;&#x88C5;&#x7740;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x503C;,&#x4E0B;&#x6807;&#x662F;&#x4ECE;1&#x5F00;&#x59CB;&#x7684;<br><b>&#x83B7;&#x53D6;&#x5143;&#x7EC4;&#x4E2D;&#x7684;&#x503C;:a._1  a._2 a.<em>n</em></b><br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val tuple=(&quot;Hadoop&quot;,&quot;Storm&quot;,&quot;Spark&quot;,1,10,100)</span><br><span class="line">println(tuple._1)  //&#x4E0B;&#x6807;&#x4ECE;1&#x5F00;&#x59CB;</span><br><span class="line">println(tuple._2)  </span><br><span class="line">println(tuple._3)</span><br></pre></td></tr></table></figure><br><br>##### 3.2 Array&#x6570;&#x7EC4;<br>- &#x4E0D;&#x53D8;&#x6570;&#x7EC4; Array<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val arr=new Array[Int](8)</span><br><span class="line">println(arr)</span><br><span class="line">println(arr.toBuffer)</span><br><span class="line"></span><br><span class="line">val arr3=Array(&quot;hdaoop&quot;,&quot;storm&quot;,&quot;spark&quot;)</span><br><span class="line">println(arr3(2))   //&#x4E0E;java&#x8BBF;&#x95EE;&#x6570;&#x7EC4;&#x4E2D;&#x5143;&#x7D20;&#x4E0D;&#x540C;&#x7684;&#x662F;,&#x662F;&#x901A;&#x8FC7;()&#x6765;&#x8BBF;&#x95EE;&#x7684;.</span><br></pre></td></tr></table></figure><br><br>- &#x53EF;&#x53D8;&#x6570;&#x7EC4; ArrayBuffer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val arrayBuffer=ArrayBuffer[Int]()</span><br><span class="line"></span><br><span class="line">arrayBuffer +=1                 //&#x5C3E;&#x90E8;&#x8FFD;&#x52A0;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</span><br><span class="line"></span><br><span class="line">arrayBuffer +=(2,3,4,5)         //&#x8FFD;&#x52A0;&#x591A;&#x4E2A;&#x5143;&#x7D20;</span><br><span class="line"></span><br><span class="line">arrayBuffer ++=Array(6,7)       //&#x8FFD;&#x52A0;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</span><br></pre></td></tr></table></figure><br><br>#### 4. Scala&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;<br><em>**</em><br>##### 4.1 &#x57FA;&#x672C;&#x51FD;&#x6570;<br>&#x6CE8;&#x610F;:def&#x5B9A;&#x4E49;&#x7684;&#x53EA;&#x662F;&#x65B9;&#x6CD5; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x65B9;&#x6CD5;&#x540D; &#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x5411;&#x51FD;&#x6570;&#x7684;&#x8F6C;&#x6362;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// &#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x7684;&#x5173;&#x952E;&#x5B57;def  &#x540E;&#x9762;&#x7684;max&#x5219;&#x662F;&#x65B9;&#x6CD5;&#x540D;  &#x62EC;&#x53F7;&#x5185;&#x5219;&#x662F;&#x53C2;&#x6570;</span><br><span class="line">def max(x:Int,y:Int):Int={   //&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;max&#x7684;&#x65B9;&#x6CD5;</span><br><span class="line">    if(x&gt;y)</span><br><span class="line">        x</span><br><span class="line">    else</span><br><span class="line">        y</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//f:T =&gt; R  f:&#x51FD;&#x6570;&#x540D;&#x79F0; T&#x53C2;&#x6570;&#x7C7B;&#x578B; R&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7C7B;&#x578B;</span><br><span class="line">max:Int =&gt; Int</span><br></pre></td></tr></table></figure><br><br>&#x51FD;&#x6570;&#x4E0E;&#x65B9;&#x6CD5;&#x7684;&#x533A;&#x522B;?<br><p style="text-indent:2em"><br>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x7C7B;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x4E2D;,&#x90A3;&#x4E48;&#x79F0;&#x4E4B;&#x4E3A;&#x65B9;&#x6CD5;.<br></p><br>&#x65B9;&#x6CD5;&#x4E0E;&#x51FD;&#x6570;&#x7684;&#x8F6C;&#x6362;?(&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x8F6C;&#x5316;)<br><p style="text-indent:2em"><b>&#x8BED;&#x6CD5;&#x89C4;&#x5B9A;,&#x5C06;&#x51FD;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;&#x65F6;,&#x5FC5;&#x987B;&#x5728;&#x51FD;&#x6570;&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x7A7A;&#x683C;&#x548C;&#x4E0B;&#x5212;</b></p><p><br></p><p style="text-indent:2em"><br>val a =max _ ; &#x901A;&#x8FC7;_&#x5C06;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x503C;&#x8FDB;&#x884C;&#x4F20;&#x9012;<br></p>
+
+
+
+<ul class="ui list">
+<li>&#x5C40;&#x90E8;&#x51FD;&#x6570;<p style="text-indent:2em">&#x51FA;&#x73B0;&#x5728;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x7684;&#x51FD;&#x6570;,&#x4F5C;&#x7528;&#x57DF;&#x53EA;&#x80FD;&#x662F;&#x51FD;&#x6570;&#x5185;&#x90E8;</p>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def f():Unit{</span><br><span class="line">    g</span><br><span class="line"></span><br><span class="line">    def g():Unit{</span><br><span class="line">        println(&quot;&#x5185;&#x90E8;&#x51FD;&#x6570;&quot;)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    println(&quot;&#x5916;&#x90E8;&#x51FD;&#x6570;&quot;)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-&#x533F;&#x540D;&#x51FD;&#x6570;-&#x6CA1;&#x6709;&#x540D;&#x79F0;&#x7684;&#x51FD;&#x6570;-&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;def-&#x9700;&#x8981;-gt-&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x4F53;"><a href="#4-2-&#x533F;&#x540D;&#x51FD;&#x6570;-&#x6CA1;&#x6709;&#x540D;&#x79F0;&#x7684;&#x51FD;&#x6570;-&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;def-&#x9700;&#x8981;-gt-&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x4F53;" class="headerlink" title="4.2 &#x533F;&#x540D;&#x51FD;&#x6570;:&#x6CA1;&#x6709;&#x540D;&#x79F0;&#x7684;&#x51FD;&#x6570;,&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;def,&#x9700;&#x8981;=&gt;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x4F53;"></a>4.2 &#x533F;&#x540D;&#x51FD;&#x6570;:&#x6CA1;&#x6709;&#x540D;&#x79F0;&#x7684;&#x51FD;&#x6570;,&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;def,&#x9700;&#x8981;=&gt;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x4F53;</h5><p>Scala&#x4E2D;&#x5B9A;&#x4E49;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#x5C31;&#x662F;:(&#x53C2;&#x6570;&#x540D;:&#x53C2;&#x6570;&#x7C7B;&#x578B;)=&gt;&#x51FD;&#x6570;&#x4F53;</p>
+<p style="text-indent:2em"><br>    val sayHelloFunc=(name:String)=&gt;println(&#x201C;Hello,&#x201D;+name)//&#x901A;&#x8FC7;&#x5C06;&#x5B83;&#x8D4B;&#x503C;&#x8FDB;&#x884C;&#x8C03;&#x7528;<br></p>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//&#x4E00;&#x4E2A;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;&#x4F8B;&#x5B50;,&#x6CA1;&#x6709;&#x51FD;&#x6570;&#x540D;&#x5B57;&#x7684;&#x51FD;&#x6570;,&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8D4B;&#x503C;&#x8C03;&#x7528;&#x8BE5;&#x533F;&#x540D;&#x51FD;&#x6570;</span><br><span class="line">//&#x533F;&#x540D;&#x51FD;&#x6570;&#x901A;&#x5E38;&#x662F;&#x7528; =&gt; &#x6765;&#x5B9A;&#x4E49;&#x7684;</span><br><span class="line">(x:Int,y:Int) =&gt; {</span><br><span class="line">    if(x&gt;y) x else y</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h5 id="4-3-&#x9AD8;&#x9636;&#x51FD;&#x6570;-&#x51FD;&#x6570;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x662F;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;"><a href="#4-3-&#x9AD8;&#x9636;&#x51FD;&#x6570;-&#x51FD;&#x6570;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x662F;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;" class="headerlink" title="4.3 &#x9AD8;&#x9636;&#x51FD;&#x6570;(&#x51FD;&#x6570;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x662F;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;)"></a>4.3 &#x9AD8;&#x9636;&#x51FD;&#x6570;(&#x51FD;&#x6570;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x662F;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;)</h5><ul class="ui list">
+<li>&#x53EF;&#x4EE5;&#x5C06;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x4F20;&#x5165;&#x5176;&#x4ED6;&#x51FD;&#x6570;,&#x4F5C;&#x4E3A;&#x53C2;&#x6570;.</li>
+<li>&#x63A5;&#x6536; <strong>&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;</strong> ,&#x88AB;&#x79F0;&#x4F5C;&#x9AD8;&#x9636;&#x51FD;&#x6570;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x9AD8;&#x9636;&#x51FD;&#x6570;</span><br><span class="line">def greeting(name:String,func:String=&gt;Unit)={</span><br><span class="line">    func(name)</span><br><span class="line">    //&#x65B9;&#x6CD5;&#x4F53;&#x91CC;&#x9762;&#x8C03;&#x7528;&#x4E86;&#x53C2;&#x6570;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main(args:Array[String]):Unit{</span><br><span class="line">    def sayHelloFunc(a:String):Unit{</span><br><span class="line">        println(&quot;name=${a}&quot;)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    //&#x8C03;&#x7528;&#x9AD8;&#x9636;&#x51FD;&#x6570;</span><br><span class="line">    greeting(sayHelloFunc_)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x4E24;&#x4E2A;&#x6570;&#x7684;+-*/&#x8FD0;&#x7B97;</span><br><span class="line">def opera(x:Int,y:Int,func:(x:Int,y:Int)=&gt;Int){</span><br><span class="line">    println(result+&quot;${func(x,y)}&quot;)</span><br><span class="line">}</span><br><span class="line">opera(1,2,(x,y)=&gt;x+y)</span><br><span class="line">opera(1,2,(x,y)=&gt;x-y)</span><br><span class="line">opera(1,2,(x,y)=&gt;x*y)</span><br><span class="line">opera(1,2,(x,y)=&gt;x/y)</span><br><span class="line"></span><br><span class="line">//&#x53EF;&#x4EE5;&#x7528;_&#x7B26;&#x53F7;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x6570;</span><br><span class="line">opera(1,2,_+_)</span><br><span class="line">opera(1,2,_-_)</span><br><span class="line">opera(1,2,_*_)</span><br><span class="line">opera(1,2,_/_)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//Scala&#x5E38;&#x7528;&#x9AD8;&#x9636;&#x51FD;&#x6570;</span><br><span class="line">Array(1,2,3,4,5).map(2*_)</span><br><span class="line">(1 to 9).map(&quot;*&quot;*_).foreach(println_)</span><br><span class="line">(1 to 20).filter(_%2==0)</span><br><span class="line">(1 to 9).reduceLeft(_ * _)   //1*2*3*4*5*6*7*8*9</span><br></pre></td></tr></table></figure>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-15T03:40:45.582Z" itemprop="datePublished">2018-11-15</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/Scala/">Scala</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2018/11/15/Shuffle/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    MapReduce数据合并与连接机制(Shuffle)
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/14/MapReduce/" class="ui tiny button">
+                    
+                    MapReduce过程
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#Scala概述"><span>Scala概述</span></a><ol><li><a href="#1-Scala中变量-基本数据类型"><span>1. Scala中变量,基本数据类型</span></a><ol><li><a href="#1-1-Scala中的操作符"><span>1.1 Scala中的操作符</span></a></li></ol></li><li><a href="#2-程序控制流程结构"><span>2. 程序控制流程结构</span></a><ol><li><a href="#2-1-条件判断"><span>2.1 条件判断</span></a></li><li><a href="#2-2-循环"><span>2.2 循环</span></a></li></ol></li><li><a href="#3-集合-Array-List-Set-Map-不变与可变集合"><span>3. 集合(Array List Set Map) 不变与可变集合</span></a><ol><li><a href="#3-1-Tuple元组"><span>3.1 Tuple元组</span></a></li><li><a href="#4-2-匿名函数-没有名称的函数-定义的时候不需def-需要-gt-定义方法体"><span>4.2 匿名函数:没有名称的函数,定义的时候不需def,需要=>定义方法体</span></a></li><li><a href="#4-3-高阶函数-函数参数类型是匿名函数的"><span>4.3 高阶函数(函数参数类型是匿名函数的)</span></a></li></ol></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
