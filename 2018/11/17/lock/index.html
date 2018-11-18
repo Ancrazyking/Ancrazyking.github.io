@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>锁,可重入锁与分布式锁 | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="1. &amp;#x6982;&amp;#x8FF0; Java&amp;#x4E2D;&amp;#x7684;synchronized&amp;#x5173;&amp;#x952E;&amp;#x5B57;&amp;#x548C;ReentrantLock&amp;#x53EF;&amp;#x91CD;&amp;#x5165;&amp;#x9501;&amp;#x5728;&amp;#x4EE3;&amp;#x7801;&amp;#x4E2D;&amp;#x662F;&amp;#x7ECF;&amp;#x5E38;&amp;#x89C1;&amp;#x7684">
+<meta name="keywords" content="并发编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="锁,可重入锁与分布式锁">
+<meta property="og:url" content="http://yoursite.com/2018/11/17/lock/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="1. &amp;#x6982;&amp;#x8FF0; Java&amp;#x4E2D;&amp;#x7684;synchronized&amp;#x5173;&amp;#x952E;&amp;#x5B57;&amp;#x548C;ReentrantLock&amp;#x53EF;&amp;#x91CD;&amp;#x5165;&amp;#x9501;&amp;#x5728;&amp;#x4EE3;&amp;#x7801;&amp;#x4E2D;&amp;#x662F;&amp;#x7ECF;&amp;#x5E38;&amp;#x89C1;&amp;#x7684">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxb3gx4tv7j30ew052t8t.jpg">
+<meta property="og:updated_time" content="2018-11-17T10:38:45.357Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="锁,可重入锁与分布式锁">
+<meta name="twitter:description" content="1. &amp;#x6982;&amp;#x8FF0; Java&amp;#x4E2D;&amp;#x7684;synchronized&amp;#x5173;&amp;#x952E;&amp;#x5B57;&amp;#x548C;ReentrantLock&amp;#x53EF;&amp;#x91CD;&amp;#x5165;&amp;#x9501;&amp;#x5728;&amp;#x4EE3;&amp;#x7801;&amp;#x4E2D;&amp;#x662F;&amp;#x7ECF;&amp;#x5E38;&amp;#x89C1;&amp;#x7684">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxb3gx4tv7j30ew052t8t.jpg">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Student/ Code Farmer
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">SuZhou</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-lock" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    锁,可重入锁与分布式锁
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="1-&#x6982;&#x8FF0;"><a href="#1-&#x6982;&#x8FF0;" class="headerlink" title="1. &#x6982;&#x8FF0;"></a>1. &#x6982;&#x8FF0;</h3><hr>
+<p style="text-indent:2em">Java&#x4E2D;&#x7684;synchronized&#x5173;&#x952E;&#x5B57;&#x548C;ReentrantLock&#x53EF;&#x91CD;&#x5165;&#x9501;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x662F;&#x7ECF;&#x5E38;&#x89C1;&#x7684;,&#x4E00;&#x642C;&#x7528;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x73AF;&#x5883;&#x4E2D;&#x63A7;&#x5236;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x3002;&#x968F;&#x7740;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x53D1;&#x5C55;,&#x672C;&#x5730;&#x7684;&#x52A0;&#x9501;&#x5F80;&#x5F80;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x7684;&#x9700;&#x8981;,&#x4E8E;&#x662F;&#x51FA;&#x73B0;&#x4E86;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x3002;<br></p>
+
+<h3 id="2-Java&#x4E2D;&#x7684;&#x9501;&#x53CA;&#x540C;&#x6B65;&#x673A;&#x5236;"><a href="#2-Java&#x4E2D;&#x7684;&#x9501;&#x53CA;&#x540C;&#x6B65;&#x673A;&#x5236;" class="headerlink" title="2. Java&#x4E2D;&#x7684;&#x9501;&#x53CA;&#x540C;&#x6B65;&#x673A;&#x5236;"></a>2. Java&#x4E2D;&#x7684;&#x9501;&#x53CA;&#x540C;&#x6B65;&#x673A;&#x5236;</h3><hr>
+<h4 id="2-1-&#x5185;&#x7F6E;&#x9501;synchronized&#x5173;&#x952E;&#x5B57;"><a href="#2-1-&#x5185;&#x7F6E;&#x9501;synchronized&#x5173;&#x952E;&#x5B57;" class="headerlink" title="2.1 &#x5185;&#x7F6E;&#x9501;synchronized&#x5173;&#x952E;&#x5B57;"></a>2.1 &#x5185;&#x7F6E;&#x9501;synchronized&#x5173;&#x952E;&#x5B57;</h4><hr>
+<p style="text-indent:2em"><br>Java&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x5185;&#x7F6E;&#x7684;&#x9501;&#x673A;&#x5236;&#x6765;&#x652F;&#x6301;&#x539F;&#x5B50;&#x6027;:&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x3002;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x5305;&#x542B;&#x4E24;&#x90E8;&#x5206;:&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x9501;&#x7684;&#x5BF9;&#x8C61;&#x5F15;&#x7528;,&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x7531;&#x8FD9;&#x4E2A;&#x9501;&#x4FDD;&#x62A4;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x3002;<br>&#x6BCF;&#x4E2A;Java&#x5BF9;&#x8C61;&#x90FD;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x540C;&#x6B65;&#x7684;&#x9501;,&#x8FD9;&#x4E9B;&#x9501;&#x88AB;&#x79F0;&#x4E3A;&#x5185;&#x7F6E;&#x9501;(Intrinsic Lock)&#x6216;&#x76D1;&#x89C6;&#x5668;(Monitor Lock)&#x3002;<br></p><br><p style="text-indent:2em"><br>&#x7EBF;&#x7A0B;&#x5728;&#x8FDB;&#x5165;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x4E4B;&#x524D;&#x81EA;&#x52A8;&#x83B7;&#x5F97;&#x9501;,&#x5E76;&#x5728;&#x9000;&#x51FA;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x65F6;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x9501;&#x3002;<br>&#x6216;&#x5F97;&#x5185;&#x7F6E;&#x9501;&#x7684; <i>&#x552F;&#x4E00;&#x8DEF;&#x5F84;</i> &#x5C31;&#x662F; <b>&#x8FDB;&#x5165;&#x7531;&#x8FD9;&#x4E2A;&#x9501;&#x5305;&#x542B;&#x7684;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x6216;&#x65B9;&#x6CD5;</b> &#x3002;<br></p><br><p style="text-indent:2em"><br>Java&#x5185;&#x7F6E;&#x9501;&#x662F;&#x4E00;&#x79CD;&#x4E92;&#x65A5;&#x9501;,&#x6700;&#x591A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x80FD;&#x6301;&#x6709;&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x3002;&#x4F8B;&#x5982;&#x5F53;&#x7EBF;&#x7A0B;A&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x7531;&#x7EBF;&#x7A0B;B&#x6301;&#x6709;&#x7684;&#x9501;&#x65F6;,&#x7EBF;&#x7A0B;A&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#x6216;&#x963B;&#x585E;&#x3002;&#x76F4;&#x81F3;&#x7EBF;&#x7A0B;B&#x91CA;&#x653E;&#x8FD9;&#x4E2A;&#x9501;&#x3002;&#x5982;&#x679C;B&#x6C38;&#x8FDC;&#x4E0D;&#x91CA;&#x653E;&#x9501;&#xFF0C;&#x90A3;&#x4E48;A&#x5C06;&#x6C38;&#x8FDC;&#x7B49;&#x4E0B;&#x53BB;&#x3002;<br></p>
+
+
+<ul class="ui list">
+<li>&#x91CD;&#x5165;<p style="text-indent:2em"><br>&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x6301;&#x6709;&#x7684;&#x9501;&#x65F6;&#xFF0C;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;&#x7684;&#x7EBF;&#x7A0B;&#x5C31;&#x4F1A;&#x963B;&#x585E;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x7531;&#x4E8E;&#x5185;&#x7F6E;&#x9501;&#x662F;&#x53EF;&#x91CD;&#x5165;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B; <i>&#x8BD5;&#x56FE;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x7531;&#x5B83;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x9501;</i>&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x5C31;&#x4F1A;&#x6210;&#x529F;&#x3002;<br></p><br><p style="text-indent:2em"><br><b>synchronized&#x5185;&#x7F6E;&#x9501;&#x662F;&#x53EF;&#x91CD;&#x5165;&#x7684;&#x3002;</b><br></p>
+
+
+</li>
+</ul>
+<h4 id="2-2-volatile&#x53D8;&#x91CF;&#xFF08;&#x9632;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF09;"><a href="#2-2-volatile&#x53D8;&#x91CF;&#xFF08;&#x9632;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF09;" class="headerlink" title="2.2 volatile&#x53D8;&#x91CF;&#xFF08;&#x9632;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF09;"></a>2.2 volatile&#x53D8;&#x91CF;&#xFF08;&#x9632;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF09;</h4><hr>
+<p style="text-indent:2em"><br>Java&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x7A0D;&#x5F31;&#x7684;&#x540C;&#x6B65;&#x673A;&#x5236;&#xFF0C;&#x5373;volatile&#x53D8;&#x91CF;&#xFF0C;&#x7528;&#x6765;&#x786E;&#x4FDD;&#x5C06;<b>&#x53D8;&#x91CF;&#x7684;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x5230;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;</b>&#x3002;<br></p><br><p style="text-indent:2em"><br>volatile&#x662F;&#x4E00;&#x79CD;&#x6BD4;synchronized&#x5173;&#x952E;&#x5B57;&#x66F4;&#x52A0;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;&#x540C;&#x6B65;&#x673A;&#x5236;&#x3002;<br></p><br><p style="text-indent:2em"><br><b>&#x5185;&#x7F6E;&#x9501;&#x7B49;&#x52A0;&#x9501;&#x673A;&#x5236;&#x65E2;&#x80FD;&#x4FDD;&#x8BC1;&#x53EF;&#x89C1;&#x6027;&#x53C8;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x539F;&#x5B50;&#x6027;&#xFF0C;&#x800C;volatile&#x53D8;&#x91CF;&#x53EA;&#x80FD;&#x786E;&#x4FDD;&#x53EF;&#x89C1;&#x6027;&#x3002;</b><br></p>
+
+<ul class="ui list">
+<li>JMM&#x7EBF;&#x7A0B;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#x6A21;&#x578B;<br><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxb3gx4tv7j30ew052t8t.jpg" alt="Java&#x5185;&#x5B58;&#x6A21;&#x578B;.jpg"></li>
+<li><p>&#x4E3B;&#x5185;&#x5B58;&#xFF08;&#x5185;&#x5B58;&#xFF09;</p>
+<p style="text-indent:2em"><br>&#x7C7B;&#x4F3C;&#x4E8E;&#x8BA1;&#x7B97;&#x673A;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x4E3B;&#x5B58;&#x88AB;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#xFF08;&#x5982;&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF0C;&#x5806;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#xFF09;&#x3002;<br></p>
+</li>
+<li><p>&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#xFF08;&#x7F13;&#x5B58;&#xFF0C;&#x89E3;&#x51B3;cpu&#x4E0E;&#x5185;&#x5B58;&#x901F;&#x5EA6;&#x4E0D;&#x5339;&#x914D;&#xFF09;</p>
+<p style="text-indent:2em"><br>&#x7C7B;&#x4F3C;&#x4E8E;CPU&#x4E2D;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#xFF0C;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x6765;&#x8BF4;&#xFF0C;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x4E86;&#x8BE5; <b>&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x7684;&#x526F;&#x672C;</b>&#x3002;<br></p>
+
+</li>
+</ul>
+<p style="text-indent:2em"><br>&#x7EBF;&#x7A0B;&#x5BF9;&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x5FC5;&#x987B;&#x5728;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#x4E2D;&#x8FDB;&#x884C;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x4E3B;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x7531;&#x4E8E;&#x7EBF;&#x7A0B;&#x79C1;&#x6709;&#x7684;&#x6808;&#xFF0C;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x5F7C;&#x6B64;&#x7684;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x4F20;&#x9012;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x4E3B;&#x5185;&#x5B58;&#x8FDB;&#x884C;&#x3002;<br></p>
+
+<ul class="ui list">
+<li><p>&#x539F;&#x5B50;&#x6027;</p>
+<p style="text-indent:2em"><br>&#x4E00;&#x4E9B;&#x4E86;&#x4E0D;&#x53EF;&#x88AB;&#x4E2D;&#x65AD;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x8FD9;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x8981;&#x4E48;&#x5168;&#x6210;&#x529F;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x5931;&#x8D25;&#x3002;&#x5982;&#x4E8B;&#x52A1;&#x7684;&#x63D0;&#x4EA4;&#x4E0E;&#x56DE;&#x6EDA;&#x3002;<br></p>
+</li>
+<li><p>&#xFF08;&#x5185;&#x5B58;&#xFF09;&#x53EF;&#x89C1;&#x6027;</p>
+<p style="text-indent:2em">&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x66F4;&#x65B0;&#x4E86;&#x67D0;&#x4E2A;&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x53EF;&#x89C1;&#x7684;&#x3002;</p>
+</li>
+<li><p>&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;</p>
+<p style="text-indent:2em"><br>JVM&#x5728;&#x7F16;&#x8BD1;Java&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6216;&#x8005;CPU&#x5728;&#x6267;&#x884C;JVM&#x5B57;&#x8282;&#x7801;&#x65F6;&#xFF0C;&#x5BF9;&#x73B0;&#x6709;&#x7684;&#x6307;&#x4EE4;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x91CD;&#x6392;&#x5E8F;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x4F18;&#x5316;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#xFF0C;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x80FD;&#x591F;&#x66F4;&#x5FEB;&#x7684;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#x3002;<br></p>
+
+
+</li>
+</ul>
+<p>volatile&#x5173;&#x952E;&#x5B57;&#x4FDD;&#x8BC1;&#x4E86; <strong>&#x5185;&#x5B58;&#x53EF;&#x89C1;&#x6027;</strong>&#xFF0C; <strong>&#x963B;&#x6B62;&#x4E86;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;</strong> &#xFF08;&#x5185;&#x5B58;&#x5C4F;&#x969C;&#xFF09;&#x3002;</p>
+<p>&#x5173;&#x4E8E;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#x53CA;&#x5185;&#x5B58;&#x5C4F;&#x969C;&#xFF0C;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x8BB2;&#x7684;&#x5F88;&#x597D;&#x3002;<a href="https://mp.weixin.qq.com/s/DZkGRTan2qSzJoDAx7QJag" target="_blank" rel="noopener">&#x6F2B;&#x753B;&#xFF1A;&#x4EC0;&#x4E48;&#x662F;volatile&#x5173;&#x952E;&#x5B57;&#xFF1F;&#xFF08;&#x6574;&#x5408;&#x7248;&#xFF09;</a></p>
+<h4 id="2-3-&#x663E;&#x793A;&#x9501;ReentrantLock"><a href="#2-3-&#x663E;&#x793A;&#x9501;ReentrantLock" class="headerlink" title="2.3 &#x663E;&#x793A;&#x9501;ReentrantLock"></a>2.3 &#x663E;&#x793A;&#x9501;ReentrantLock</h4><hr>
+<p style="text-indent:2em"><br>Java5.0&#x540E;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x673A;&#x5236;&#xFF1A;ReentrantLock&#x3002;ReentrantLock&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x66FF;&#x4EE3;&#x5185;&#x7F6E;&#x52A0;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x662F;&#x5F53;&#x5185;&#x7F6E;&#x9501;synchronized&#x673A;&#x5236;&#x4E0D;&#x9002;&#x7528;&#x65F6;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x9AD8;&#x7EA7;&#x529F;&#x80FD;&#x3002;<br></p><br><p style="text-indent:2em"><br>&#x4E0E;&#x5185;&#x7F6E;&#x52A0;&#x9501;&#x673A;&#x5236;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;Lock&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x65E0;&#x6761;&#x4EF6;&#x7684;&#x3001;&#x53EF;&#x8F6E;&#x8BE2;&#x7684;&#x3001;&#x5B9A;&#x65F6;&#x7684;&#x4EE5;&#x53CA;&#x53EF;&#x4E2D;&#x65AD;&#x7684;&#x9501;&#x83B7;&#x53D6;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x6709;&#x52A0;&#x9501;&#x548C;&#x89E3;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x663E;&#x5F0F;&#xFF08;&#x8C03;&#x7528;&#xFF09;&#x7684;&#x3002;<br></p>
+
+<ul class="ui list">
+<li><p>Lock&#x63A5;&#x53E3;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Lock{</span><br><span class="line">    void lock;</span><br><span class="line">    void lockInterruptibly() throws InterruptedException;</span><br><span class="line">    boolean tryLock();</span><br><span class="line">    boolean tryLock(long timeout,TimeUnit unit) throws InterruptedException;</span><br><span class="line">    void unlock();</span><br><span class="line">    condition newCondition();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ReentrantLock&#x5B9E;&#x73B0;&#x4E86;Lock&#x63A5;&#x53E3;</p>
+<p style="text-indent:2em"><br>&#x63D0;&#x4F9B;&#x4E86;&#x4E0E;synchronized&#x76F8;&#x540C;&#x7684;&#x4E92;&#x65A5;&#x6027;&#x548C;&#x5185;&#x5B58;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x800C;&#x4E14;&#x63D0;&#x4F9B;&#x4E86;<b>&#x53EF;&#x91CD;&#x5165;&#x7684;&#x52A0;&#x9501;&#x8BED;&#x4E49;</b>&#x3002;<br></p><br><p style="text-indent:2em"><br>ReentrantLock&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x7684;&#x52A0;&#x9501;&#x673A;&#x5236;&#x3002;<br></p>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Lock lock=new ReentrantLock();</span><br><span class="line">...</span><br><span class="line">lock.lock();</span><br><span class="line">try{</span><br><span class="line">    //&#x66F4;&#x65B0;&#x5BF9;&#x8C61;&#x72B6;&#x6001;</span><br><span class="line">    //&#x6355;&#x83B7;&#x5F02;&#x5E38;</span><br><span class="line">}finally{</span><br><span class="line">    lock.unlock();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="3-&#x5206;&#x5E03;&#x5F0F;&#x9501;"><a href="#3-&#x5206;&#x5E03;&#x5F0F;&#x9501;" class="headerlink" title="3. &#x5206;&#x5E03;&#x5F0F;&#x9501;"></a>3. &#x5206;&#x5E03;&#x5F0F;&#x9501;</h3><hr>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-17T07:52:41.793Z" itemprop="datePublished">2018-11-17</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/并发编程/">并发编程</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2018/11/18/yarn/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    资源调度框架Yarn（Yet Another Resource Negotiator）
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/15/Shuffle/" class="ui tiny button">
+                    
+                    MapReduce数据合并与连接机制(Shuffle)
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#1-概述"><span>1. 概述</span></a></li><li><a href="#2-Java中的锁及同步机制"><span>2. Java中的锁及同步机制</span></a><ol><li><a href="#2-1-内置锁synchronized关键字"><span>2.1 内置锁synchronized关键字</span></a></li><li><a href="#2-2-volatile变量（防止指令重排序，对所有线程的可见性）"><span>2.2 volatile变量（防止指令重排序，对所有线程的可见性）</span></a></li><li><a href="#2-3-显示锁ReentrantLock"><span>2.3 显示锁ReentrantLock</span></a></li></ol></li><li><a href="#3-分布式锁"><span>3. 分布式锁</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
