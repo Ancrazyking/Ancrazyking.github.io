@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>面试Java开发时问的一些问题，多态的条件。。 | Afeng&#39;s Blogs</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="Java&amp;#x4E2D;&amp;#x591A;&amp;#x6001;&amp;#x7684;&amp;#x6761;&amp;#x4EF6; &amp;#x5728;Java&amp;#x8BED;&amp;#x8A00;&amp;#x4E2D;&amp;#xFF0C;Override(&amp;#x8986;&amp;#x76D6;&amp;#x3001;&amp;#x91CD;&amp;#x5199;)&amp;#x662F;&amp;#x5B9E;&amp;#x73B0;&amp;#x591A;&amp;#x6001;&amp;#x7684;&amp;#x5">
+<meta name="keywords" content="面经">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试Java开发时问的一些问题，多态的条件。。">
+<meta property="og:url" content="http://yoursite.com/2018/11/23/面经/index.html">
+<meta property="og:site_name" content="Afeng&#39;s Blogs">
+<meta property="og:description" content="Java&amp;#x4E2D;&amp;#x591A;&amp;#x6001;&amp;#x7684;&amp;#x6761;&amp;#x4EF6; &amp;#x5728;Java&amp;#x8BED;&amp;#x8A00;&amp;#x4E2D;&amp;#xFF0C;Override(&amp;#x8986;&amp;#x76D6;&amp;#x3001;&amp;#x91CD;&amp;#x5199;)&amp;#x662F;&amp;#x5B9E;&amp;#x73B0;&amp;#x591A;&amp;#x6001;&amp;#x7684;&amp;#x5">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-23T08:19:42.774Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试Java开发时问的一些问题，多态的条件。。">
+<meta name="twitter:description" content="Java&amp;#x4E2D;&amp;#x591A;&amp;#x6001;&amp;#x7684;&amp;#x6761;&amp;#x4EF6; &amp;#x5728;Java&amp;#x8BED;&amp;#x8A00;&amp;#x4E2D;&amp;#xFF0C;Override(&amp;#x8986;&amp;#x76D6;&amp;#x3001;&amp;#x91CD;&amp;#x5199;)&amp;#x662F;&amp;#x5B9E;&amp;#x73B0;&amp;#x591A;&amp;#x6001;&amp;#x7684;&amp;#x5">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "afenga",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>Afeng&#39;s Blogs</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">afenga</a>
+                    
+                        <div class="meta">
+                            Student/ Code Farmer
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">SuZhou</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a href="https://github.com/Ancrazyking"><i class="large github icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large weibo icon" style="float: left"></i></a>
+
+                            
+
+                                <a href="https://github.com/Ancrazyking"><i class="large twitter icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item">
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-面经" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    面试Java开发时问的一些问题，多态的条件。。
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <blockquote>
+<h4 id="Java&#x4E2D;&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;"><a href="#Java&#x4E2D;&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;" class="headerlink" title="Java&#x4E2D;&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;"></a>Java&#x4E2D;&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;</h4></blockquote>
+<p style="text-indent:2em"><br>&#x5728;Java&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;Override(&#x8986;&#x76D6;&#x3001;&#x91CD;&#x5199;)&#x662F;&#x5B9E;&#x73B0;&#x591A;&#x6001;&#x7684;&#x5173;&#x952E;&#x6280;&#x672F;&#x3002;<br></p>
+
+<ul class="ui list">
+<li>&#x7EE7;&#x627F;</li>
+<li>&#x7236;&#x7C7B;&#x5F15;&#x7528;&#x5B50;&#x7C7B;&#x5BF9;&#x8C61;</li>
+<li>&#x65B9;&#x6CD5;&#x7684;&#x91CD;&#x5199;</li>
+</ul>
+<p>PS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x8FD9;&#x662F;&#x9762;&#x8BD5;&#x5B98;&#x95EE;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x56DE;&#x7B54;&#x7684;&#x4E5F;&#x662F;&#x4E00;&#x8138;&#x61F5;&#x903C;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x4E0D;&#x8FC7;&#x4E24;&#x4E2A;&#x9762;&#x8BD5;&#x5B98;&#x633A;&#x548C;&#x853C;&#x7684;&#xFF0C;&#x8BF4;&#x5C31;&#x662F;&#x8986;&#x76D6;&#x548C;&#x91CD;&#x5199;&#xFF0C;&#x6211;&#x5F53;&#x65F6;&#x548B;&#x5C31;&#x60F3;&#x4E0D;&#x5230;&#x4E86;&#x3002;</span><br></pre></td></tr></table></figure></p>
+
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-11-23T08:20:09.583Z" itemprop="datePublished">2018-11-23</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/面经/">面经</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>Previous</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2018/11/19/Combiner/" class="ui tiny button">
+                    
+                    MapReduce优化Combiner和Partitioner
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#Java中多态的条件"><span>Java中多态的条件</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">afenga</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
