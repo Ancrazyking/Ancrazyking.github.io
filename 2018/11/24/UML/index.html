@@ -6,21 +6,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name="description" content="">
-    <title>从现在开始,写博客,越努力,越幸运! | Afeng&#39;s Blogs</title>
+    <title>UML类图与类的关系(类图如何看) | Afeng&#39;s Blogs</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x4F60;&amp;#x5E94;&amp;#x8BE5;(&amp;#x4ECE;&amp;#x73B0;&amp;#x5728;&amp;#x5F00;&amp;#x59CB;)&amp;#x5199;&amp;#x535A;&amp;#x5BA2; [&amp;#x8F6C;]&amp;#x8F6C;&amp;#x81EA;&amp;#x5218;&amp;#x672A;&amp;#x9E4F;&amp;#x7684;&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x">
-<meta name="keywords" content="感悟">
+    <meta name="description" content="&amp;#x6CDB;&amp;#x5316;     &amp;#x7EE7;&amp;#x627F;&amp;#x5173;&amp;#x7CFB;&amp;#xFF0C;&amp;#x5E26;&amp;#x4E09;&amp;#x89D2;&amp;#x7BAD;&amp;#x5934;&amp;#x7684;&amp;#x5B9E;&amp;#x7EBF;&amp;#xFF0C;&amp;#x7BAD;&amp;#x5934;&amp;#x6307;&amp;#x5411;&amp;#x7236;&amp;#x7C7B;&amp;#x3002;    &amp;#x5B">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从现在开始,写博客,越努力,越幸运!">
-<meta property="og:url" content="http://yoursite.com/2018/11/07/helloblog/index.html">
+<meta property="og:title" content="UML类图与类的关系(类图如何看)">
+<meta property="og:url" content="http://yoursite.com/2018/11/24/UML/index.html">
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
-<meta property="og:description" content="&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x4F60;&amp;#x5E94;&amp;#x8BE5;(&amp;#x4ECE;&amp;#x73B0;&amp;#x5728;&amp;#x5F00;&amp;#x59CB;)&amp;#x5199;&amp;#x535A;&amp;#x5BA2; [&amp;#x8F6C;]&amp;#x8F6C;&amp;#x81EA;&amp;#x5218;&amp;#x672A;&amp;#x9E4F;&amp;#x7684;&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x">
+<meta property="og:description" content="&amp;#x6CDB;&amp;#x5316;     &amp;#x7EE7;&amp;#x627F;&amp;#x5173;&amp;#x7CFB;&amp;#xFF0C;&amp;#x5E26;&amp;#x4E09;&amp;#x89D2;&amp;#x7BAD;&amp;#x5934;&amp;#x7684;&amp;#x5B9E;&amp;#x7EBF;&amp;#xFF0C;&amp;#x7BAD;&amp;#x5934;&amp;#x6307;&amp;#x5411;&amp;#x7236;&amp;#x7C7B;&amp;#x3002;    &amp;#x5B">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-07T11:58:21.699Z">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fxj2q2m8vuj30mr0ohgq1.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxj2pyj98bj30hw0a50t8.jpg">
+<meta property="og:updated_time" content="2018-11-24T07:30:53.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从现在开始,写博客,越努力,越幸运!">
-<meta name="twitter:description" content="&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x4F60;&amp;#x5E94;&amp;#x8BE5;(&amp;#x4ECE;&amp;#x73B0;&amp;#x5728;&amp;#x5F00;&amp;#x59CB;)&amp;#x5199;&amp;#x535A;&amp;#x5BA2; [&amp;#x8F6C;]&amp;#x8F6C;&amp;#x81EA;&amp;#x5218;&amp;#x672A;&amp;#x9E4F;&amp;#x7684;&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x">
+<meta name="twitter:title" content="UML类图与类的关系(类图如何看)">
+<meta name="twitter:description" content="&amp;#x6CDB;&amp;#x5316;     &amp;#x7EE7;&amp;#x627F;&amp;#x5173;&amp;#x7CFB;&amp;#xFF0C;&amp;#x5E26;&amp;#x4E09;&amp;#x89D2;&amp;#x7BAD;&amp;#x5934;&amp;#x7684;&amp;#x5B9E;&amp;#x7EBF;&amp;#xFF0C;&amp;#x7BAD;&amp;#x5934;&amp;#x6307;&amp;#x5411;&amp;#x7236;&amp;#x7C7B;&amp;#x3002;    &amp;#x5B">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fxj2q2m8vuj30mr0ohgq1.jpg">
 
     <script type="application/ld+json">
 {
@@ -141,7 +144,7 @@
             <!--<div class="ui one column grid">-->
                 <!--<div class="column">-->
                     <!--<div class="ui main container">-->
-                        <div id="post-helloblog" class="ui main container article-type-post">
+                        <div id="post-UML" class="ui main container article-type-post">
 
     
 
@@ -154,7 +157,7 @@
 
 <h1 class="ui header">
     
-    从现在开始,写博客,越努力,越幸运!
+    UML类图与类的关系(类图如何看)
 </h1>
 
 
@@ -163,7 +166,46 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        <h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4F60;&#x5E94;&#x8BE5;-&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;-&#x5199;&#x535A;&#x5BA2;-&#x8F6C;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x4F60;&#x5E94;&#x8BE5;-&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;-&#x5199;&#x535A;&#x5BA2;-&#x8F6C;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x4F60;&#x5E94;&#x8BE5;(&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;)&#x5199;&#x535A;&#x5BA2; [&#x8F6C;]"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x4F60;&#x5E94;&#x8BE5;(&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;)&#x5199;&#x535A;&#x5BA2; [&#x8F6C;]</h3><p>&#x8F6C;&#x81EA;&#x5218;&#x672A;&#x9E4F;&#x7684;<a href="http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/" target="_blank" rel="noopener">&#x4E3A;&#x4EC0;&#x4E48;&#x4F60;&#x5E94;&#x8BE5;&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;&#x5199;&#x535A;&#x5BA2;</a></p>
+                        <p><a class="magnific-img" href="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fxj2q2m8vuj30mr0ohgq1.jpg"><img src="http://wx1.sinaimg.cn/mw690/006pTdaLgy1fxj2q2m8vuj30mr0ohgq1.jpg" alt="UML.png" class="ui centered image"></a></p>
+<blockquote>
+<p>&#x6CDB;&#x5316;   </p>
+</blockquote>
+<p style="text-indent:2em"><br>&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#xFF0C;&#x5E26;&#x4E09;&#x89D2;&#x7BAD;&#x5934;&#x7684;&#x5B9E;&#x7EBF;&#xFF0C;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x7236;&#x7C7B;&#x3002;<br></p>
+
+
+<blockquote>
+<p>&#x5B9E;&#x73B0;   </p>
+</blockquote>
+<p style="text-indent:2em"><br>&#x7C7B;&#x4E0E;&#x63A5;&#x53E3;&#x5173;&#x7CFB;&#xFF0C;&#x5E26;&#x4E09;&#x89D2;&#x7BAD;&#x5934;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x63A5;&#x53E3;&#x3002;<br></p>
+
+<blockquote>
+<p>&#x7EC4;&#x5408;   </p>
+</blockquote>
+<p style="text-indent:2em"><br>&#x6574;&#x4F53;&#x4E0E;&#x90E8;&#x5206;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4E14;&#x90E8;&#x5206;&#x4E0D;&#x53EF;&#x4EE5;&#x79BB;&#x5F00;&#x6574;&#x4F53;&#x800C;&#x5355;&#x72EC;&#x5B58;&#x5728;&#x3002;&#x5E26;&#x83F1;&#x5F62;&#x7684;&#x5B9E;&#x7EBF;&#xFF0C;&#x83F1;&#x5F62;&#x6307;&#x5411;&#x6574;&#x4F53;&#x3002;<br></p>
+
+
+
+<blockquote>
+<p>&#x805A;&#x5408;</p>
+</blockquote>
+<p style="text-indent:2em"><br>&#x6574;&#x4F53;&#x4E0E;&#x90E8;&#x5206;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x79BB;&#x5F00;&#x6574;&#x4F53;&#x800C;&#x5355;&#x72EC;&#x5B58;&#x5728;&#x3002;&#x5E26;&#x7A7A;&#x5FC3;&#x83F1;&#x5F62;&#x7684;&#x5B9E;&#x5FC3;&#x7EBF;&#xFF0C;&#x83F1;&#x5F62;&#x6307;&#x5411;&#x6574;&#x4F53;&#x3002;<br></p>
+
+
+<blockquote>
+<p>&#x5173;&#x8054;</p>
+</blockquote>
+<p style="text-indent:2em"><br>&#x62E5;&#x6709;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4F7F;&#x4E00;&#x4E2A;&#x7C7B;&#x77E5;&#x9053;&#x53E6;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;&#x5E26;&#x666E;&#x901A;&#x7BAD;&#x5934;&#x7684;&#x5B9E;&#x5FC3;&#x7EBF;&#xFF0C;&#x6307;&#x5411;&#x88AB;&#x62E5;&#x6709;&#x8005;&#x3002;<br></p>
+
+
+<blockquote>
+<p>&#x4F9D;&#x8D56;</p>
+</blockquote>
+<p style="text-indent:2em"><br>&#x4F7F;&#x7528;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x9700;&#x8981;&#x53E6;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x534F;&#x52A9;&#x3002;&#x5E26;&#x7BAD;&#x5934;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x6307;&#x5411;&#x88AB;&#x4F7F;&#x7528;&#x8005;&#x3002;<br></p>
+
+
+<blockquote>
+<h4 id="&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x7C7B;&#x56FE;"><a href="#&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x7C7B;&#x56FE;" class="headerlink" title="&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x7C7B;&#x56FE;"></a>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x7C7B;&#x56FE;</h4></blockquote>
+<p><a class="magnific-img" href="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxj2pyj98bj30hw0a50t8.jpg"><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxj2pyj98bj30hw0a50t8.jpg" alt="Observer.png" class="ui centered image"></a></p>
 
                         
                     </div>
@@ -174,7 +216,7 @@
 
                     <div class="description post-description">
     <span class="post-description-item">
-        <time datetime="2018-11-07T09:00:00.000Z" itemprop="datePublished">2018-11-07</time>
+        <time datetime="2018-11-24T05:06:07.824Z" itemprop="datePublished">2018-11-24</time>
 
     </span>
     <span class="post-description-item">
@@ -186,7 +228,7 @@
 
     
     <span class="ui tiny label">
-        <a href="/tags/感悟/">感悟</a>
+        <a href="/tags/Java/">Java</a>
     </span>
 
     
@@ -203,11 +245,11 @@
             <div class="column nav-left">
                 
 
-                <a href="/2018/11/07/Storm 概念 组件 编程模型/" class="ui tiny button">
+                <a href="/2018/11/26/dbEngine/" class="ui tiny button">
 
                     <i class="angle left icon"></i>
                     
-                    Storm 概念 组件 与编程模型
+                    数据库中三种基本的存储引擎
                     
 
                 </a>
@@ -217,8 +259,11 @@
             <div class="column nav-right">
                 
 
-                <a class="ui tiny button disabled">下一篇<i class="angle right icon"></i></a>
-
+                <a href="/2018/11/23/多线程相关/" class="ui tiny button">
+                    
+                    Executor、ExecutorService、Future、FutureTask、Future、Callable、Lock、Condition
+                    
+                    <i class="angle right icon"></i></a>
                 
             </div>
         </div>
@@ -233,7 +278,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#为什么你应该-从现在开始-写博客-转"><span>为什么你应该(从现在开始)写博客 [转]</span></a></li></ol>
+                    <ol class="ui ordered list"><li><a href="#观察者模式的类图"><span>观察者模式的类图</span></a></li></ol>
                 </div>
 
             </div>
