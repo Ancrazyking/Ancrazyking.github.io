@@ -9,21 +9,21 @@
     <title>数据库中三种基本的存储引擎 | Afeng&#39;s Blogs</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="&amp;#x4E09;&amp;#x79CD;&amp;#x57FA;&amp;#x672C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;&amp;#x6982;&amp;#x8FF0; &amp;#x54C8;&amp;#x5E0C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;(Redis)    &amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x7684;&amp;#x6301;&amp;#x4E45;&amp;#x5316;&amp;#x">
+    <meta name="description" content="1. &amp;#x4E09;&amp;#x79CD;&amp;#x57FA;&amp;#x672C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;&amp;#x6982;&amp;#x8FF0;  &amp;#x54C8;&amp;#x5E0C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;(Redis)  &amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x7684;&amp;#x6301;&amp;#x4E45;&amp;#x5316;&amp;#">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库中三种基本的存储引擎">
 <meta property="og:url" content="http://yoursite.com/2018/11/26/dbEngine/index.html">
 <meta property="og:site_name" content="Afeng&#39;s Blogs">
-<meta property="og:description" content="&amp;#x4E09;&amp;#x79CD;&amp;#x57FA;&amp;#x672C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;&amp;#x6982;&amp;#x8FF0; &amp;#x54C8;&amp;#x5E0C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;(Redis)    &amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x7684;&amp;#x6301;&amp;#x4E45;&amp;#x5316;&amp;#x">
+<meta property="og:description" content="1. &amp;#x4E09;&amp;#x79CD;&amp;#x57FA;&amp;#x672C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;&amp;#x6982;&amp;#x8FF0;  &amp;#x54C8;&amp;#x5E0C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;(Redis)  &amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x7684;&amp;#x6301;&amp;#x4E45;&amp;#x5316;&amp;#">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxl8oae8baj30hs07ewei.jpg">
 <meta property="og:image" content="http://www.2cto.com/uploadfile/Collfiles/20141110/20141110091559148.jpg">
-<meta property="og:image" content="https://images0.cnblogs.com/blog/319578/201312/20135106-a1e5fd079a51484085065d3b29f2d331.png">
-<meta property="og:updated_time" content="2018-11-26T02:10:21.964Z">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fxlk7vxc1yj30l40azqdq.jpg">
+<meta property="og:updated_time" content="2018-11-26T08:51:36.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库中三种基本的存储引擎">
-<meta name="twitter:description" content="&amp;#x4E09;&amp;#x79CD;&amp;#x57FA;&amp;#x672C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;&amp;#x6982;&amp;#x8FF0; &amp;#x54C8;&amp;#x5E0C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;(Redis)    &amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x7684;&amp;#x6301;&amp;#x4E45;&amp;#x5316;&amp;#x">
+<meta name="twitter:description" content="1. &amp;#x4E09;&amp;#x79CD;&amp;#x57FA;&amp;#x672C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;&amp;#x6982;&amp;#x8FF0;  &amp;#x54C8;&amp;#x5E0C;&amp;#x5B58;&amp;#x50A8;&amp;#x5F15;&amp;#x64CE;(Redis)  &amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x7684;&amp;#x6301;&amp;#x4E45;&amp;#x5316;&amp;#">
 <meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxl8oae8baj30hs07ewei.jpg">
 
     <script type="application/ld+json">
@@ -132,7 +132,7 @@
     
     <a href="/index.html" class="item">
         <i class="home icon"></i>
-        首页
+        HOME
     </a>
 
     
@@ -167,15 +167,13 @@
 
                     <div class="article-entry" itemprop="articleBody">
                         
-                        <blockquote>
-<h3 id="&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;"><a href="#&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;" class="headerlink" title="&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;"></a>&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;</h3><ul class="ui list">
-<li>&#x54C8;&#x5E0C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;(Redis) </li>
-</ul>
-</blockquote>
-<p style="text-indent:2em"><br>&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5B9E;&#x73B0;&#xFF0C;&#x652F;&#x6301;&#x589E;&#x3001;&#x5220;&#x3001;&#x6539;&#x4EE5;&#x53CA;&#x968F;&#x673A;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;<b>&#x4E0D;&#x652F;&#x6301;&#x987A;&#x5E8F;&#x626B;&#x63CF;</b>,&#x5BF9;&#x5E94;&#x7684;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;key-value&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x3002;&#x5BF9;&#x5E94;key-value&#x7684;&#x63D2;&#x5165;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x662F;O(1),&#x660E;&#x663E;&#x6BD4;&#x6811;&#x7684;&#x64CD;&#x4F5C;&#x5FEB;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x904D;&#x5386;&#x6709;&#x5E8F;&#x6570;&#x636E;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;Hash&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;<br></p>
-
+                        <h3 id="1-&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;"><a href="#1-&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;" class="headerlink" title="1. &#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;"></a>1. &#x4E09;&#x79CD;&#x57FA;&#x672C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x6982;&#x8FF0;</h3><hr>
 <ul class="ui list">
-<li>B(+)&#x6811;&#x5B58;&#x50A8;&#x5F15;&#x64CE;(B-&#x6811; MongoDB B+&#x6811; MySQL)<p style="text-indent:2em"><br>&#x6301;&#x4E45;&#x5316;&#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x4EC5;&#x652F;&#x6301;&#x5355;&#x6761;&#x8BB0;&#x5F55;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#xFF0C;&#x8FD8;&#x652F;&#x6301;&#x987A;&#x5E8F;&#x626B;&#x63CF;(B+&#x6811;&#x7684;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x6307;&#x9488;)&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x5C31;&#x662F;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;MySQL&#x3002;<br></p>
+<li><p>&#x54C8;&#x5E0C;&#x5B58;&#x50A8;&#x5F15;&#x64CE;(Redis) </p>
+<p style="text-indent:2em"><br>&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5B9E;&#x73B0;&#xFF0C;&#x652F;&#x6301;&#x589E;&#x3001;&#x5220;&#x3001;&#x6539;&#x4EE5;&#x53CA;&#x968F;&#x673A;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;<b>&#x4E0D;&#x652F;&#x6301;&#x987A;&#x5E8F;&#x626B;&#x63CF;</b>,&#x5BF9;&#x5E94;&#x7684;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;key-value&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x3002;&#x5BF9;&#x5E94;key-value&#x7684;&#x63D2;&#x5165;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x662F;O(1),&#x660E;&#x663E;&#x6BD4;&#x6811;&#x7684;&#x64CD;&#x4F5C;&#x5FEB;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x904D;&#x5386;&#x6709;&#x5E8F;&#x6570;&#x636E;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;Hash&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;<br></p>
+</li>
+<li><p>B(+)&#x6811;&#x5B58;&#x50A8;&#x5F15;&#x64CE;(B-&#x6811; MongoDB B+&#x6811; MySQL)</p>
+<p style="text-indent:2em"><br>&#x6301;&#x4E45;&#x5316;&#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x4EC5;&#x652F;&#x6301;&#x5355;&#x6761;&#x8BB0;&#x5F55;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#xFF0C;&#x8FD8;&#x652F;&#x6301;&#x987A;&#x5E8F;&#x626B;&#x63CF;(B+&#x6811;&#x7684;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x6307;&#x9488;)&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x5C31;&#x662F;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;MySQL&#x3002;<br></p>
 
 
 </li>
@@ -186,8 +184,7 @@
 
 </li>
 </ul>
-<blockquote>
-<h3 id="B-&#x6811;-B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;"><a href="#B-&#x6811;-B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;" class="headerlink" title="B(+)&#x6811;  [B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;]"></a>B(+)&#x6811;  [B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;]</h3></blockquote>
+<h3 id="2-B-&#x6811;-B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;"><a href="#2-B-&#x6811;-B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;" class="headerlink" title="2. B(+)&#x6811;  [B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;]"></a>2. B(+)&#x6811;  [B-&#x6811;&#x4E5F;&#x79F0;&#x4E3A;B&#x6811;]</h3><hr>
 <h4 id="B-&#x6811;"><a href="#B-&#x6811;" class="headerlink" title="B[-]&#x6811;"></a>B[-]&#x6811;</h4><p style="text-indent:2em"><br>&#x6811;&#x662F;&#x6709;&#x5E8F;&#x7684;&#xFF0C;&#x4E14;&#x67E5;&#x627E;&#x6548;&#x7387;&#x9AD8;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x78C1;&#x76D8;IO&#x95EE;&#x9898;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x7D22;&#x5F15;&#x662F;&#x5B58;&#x50A8;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7D22;&#x5F15;&#x7684;&#x5927;&#x5C0F;&#x53EF;&#x80FD;&#x6709;&#x51E0;&#x4E2A;G&#x751A;&#x81F3;&#x66F4;&#x591A;&#x3002;&#x5F53;&#x5229;&#x7528;&#x7D22;&#x5F15;&#x67E5;&#x8BE2;&#x65F6;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x5C06;&#x6574;&#x4E2A;&#x7D22;&#x5F15;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x80FD;&#x505A;&#x7684;&#x53EA;&#x6709;&#x9010;&#x4E00;&#x52A0;&#x8F7D;&#x6BCF;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x9875;&#xFF0C;&#x78C1;&#x76D8;&#x9875;&#x5BF9;&#x5E94;&#x7740;&#x7D22;&#x5F15;&#x6811;&#x7684;&#x8282;&#x70B9;&#x3002;<br></p>
 
 <p style="text-indent:2em"><br>&#x5F53;&#x4F7F;&#x7528;&#x4E8C;&#x53C9;&#x6811;&#x6765;&#x5B58;&#x50A8;&#x7D22;&#x5F15;&#x65F6;&#xFF0C;&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x78C1;&#x76D8;&#x7684;IO&#x6B21;&#x6570;&#x7B49;&#x4E8E;&#x7D22;&#x5F15;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;IO&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x5C06;&#x539F;&#x5148;&#x7626;&#x9AD8;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x8F6C;&#x6362;&#x6210;<b>&#x77EE;&#x80D6;</b>&#x7684;B-(B)&#x6811;&#x3002;<br></p>
@@ -206,14 +203,13 @@
 <p>&#x4E00;&#x4E2A;3&#x9636;B[-]&#x6811;:&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5305;&#x542B;&#x7684;&#x6700;&#x5927;&#x8282;&#x70B9;&#x6570;(&#x6709;&#x5E8F;)</p>
 <p><a class="magnific-img" href="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxl8oae8baj30hs07ewei.jpg"><img src="http://wx2.sinaimg.cn/mw690/006pTdaLgy1fxl8oae8baj30hs07ewei.jpg" alt="3BTree.png" class="ui centered image"></a></p>
 <p>B&#x6811;&#x7684;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x8F83;&#x4E3A;&#x590D;&#x6742;&#xFF0C;&#x4E3A;&#x4E86;&#x7EF4;&#x6301;&#x591A;&#x8DEF;&#x5E73;&#x8861;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4F4D;&#x7F6E;&#x53D8;&#x6362;&#x64CD;&#x4F5C;&#x3002;</p>
-<blockquote>
-<h3 id="LSM&#x6811;-&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;"><a href="#LSM&#x6811;-&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;" class="headerlink" title="LSM&#x6811;(&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;)"></a>LSM&#x6811;(&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;)</h3></blockquote>
+<h3 id="3-LSM&#x6811;-&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;"><a href="#3-LSM&#x6811;-&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;" class="headerlink" title="3. LSM&#x6811;(&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;)"></a>3. LSM&#x6811;(&#x65E5;&#x5FD7;&#x7ED3;&#x6784;&#x5408;&#x5E76;&#x6811;)</h3><hr>
 <h4 id="&#x4E00;&#x4E2A;LSM&#x6811;"><a href="#&#x4E00;&#x4E2A;LSM&#x6811;" class="headerlink" title="&#x4E00;&#x4E2A;LSM&#x6811;"></a>&#x4E00;&#x4E2A;LSM&#x6811;</h4><p><a class="magnific-img" href="http://www.2cto.com/uploadfile/Collfiles/20141110/20141110091559148.jpg"><img src="http://www.2cto.com/uploadfile/Collfiles/20141110/20141110091559148.jpg" alt="LSM.png" class="ui centered image"></a></p>
 <h4 id="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;"><a href="#&#x8BBE;&#x8BA1;&#x601D;&#x60F3;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x601D;&#x60F3;:"></a>&#x8BBE;&#x8BA1;&#x601D;&#x60F3;:</h4><p style="text-indent:2em"><br>&#x5C06;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x4FEE;&#x6539;&#x589E;&#x91CF;&#x4FDD;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x8FBE;&#x5230;<b>&#x6307;&#x5B9A;&#x7684;&#x5927;&#x5C0F;&#x9650;&#x5236;</b>&#x540E;&#x5C06;&#x8FD9;&#x4E9B;&#x4FEE;&#x6539;&#x64CD;&#x4F5C;&#x6279;&#x91CF;&#x5199;&#x5165;&#x78C1;&#x76D8;&#xFF0C;&#x4E0D;&#x8FC7;&#x8BFB;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x7A0D;&#x5FAE;&#x9EBB;&#x70E6;&#xFF0C;&#x4E0D;&#x8FC7;&#x8BFB;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x7A0D;&#x5FAE;&#x9EBB;&#x70E6;&#xFF0C;&#x9700;&#x8981;&#x5408;&#x5E76;&#x78C1;&#x76D8;&#x5386;&#x53F2;&#x6570;&#x636E;&#x548C;&#x5185;&#x5B58;&#x4E2D;&#x6700;&#x8FD1;&#x4FEE;&#x6539;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x5199;&#x5165;&#x6027;&#x80FD;&#x5927;&#x5927;&#x63D0;&#x5347;&#xFF0C;&#x8BFB;&#x53D6;&#x65F6;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5148;&#x770B;&#x662F;&#x5426;&#x547D;&#x4E2D;&#x5185;&#x5B58;&#xFF0C;&#x5426;&#x5219;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x8F83;&#x591A;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x3002;&#x6781;&#x7AEF;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x57FA;&#x4E8E;LSM&#x6811;&#x5B9E;&#x73B0;&#x7684;HBase&#x5199;&#x6027;&#x80FD;&#x6BD4;MySQL&#x9AD8;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x91CF;&#x7EA7;&#xFF0C;&#x8BFB;&#x6027;&#x80FD;&#x4F4E;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x91CF;&#x7EA7;&#x3002;<br></p>
 
 <h4 id="&#x539F;&#x7406;"><a href="#&#x539F;&#x7406;" class="headerlink" title="&#x539F;&#x7406;:"></a>&#x539F;&#x7406;:</h4><p style="text-indent:2em"><br>&#x628A;&#x4E00;&#x9897;&#x5927;&#x6811;&#x62C6;&#x5206;&#x6210;N&#x68F5;&#x5C0F;&#x6811;&#xFF0C;&#x5B83;&#x9996;&#x5148;&#x5199;&#x5165;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x968F;&#x7740;&#x5C0F;&#x6811;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5C0F;&#x6811;&#x4F1A;flush&#x5230;&#x78C1;&#x76D8;&#x4E2D;&#xFF0C;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x6811;&#x4F1A;&#x5B9A;&#x671F;&#x505A;merge&#x64CD;&#x4F5C;&#xFF0C;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x68F5;&#x5927;&#x6811;&#xFF0C;&#x4EE5;&#x4F18;&#x5316;&#x8BFB;&#x6027;&#x80FD;&#x3002;<br></p>
 
-<h4 id="HBase&#x67B6;&#x6784;&#x56FE;"><a href="#HBase&#x67B6;&#x6784;&#x56FE;" class="headerlink" title="HBase&#x67B6;&#x6784;&#x56FE;"></a>HBase&#x67B6;&#x6784;&#x56FE;</h4><p><a class="magnific-img" href="https://images0.cnblogs.com/blog/319578/201312/20135106-a1e5fd079a51484085065d3b29f2d331.png"><img src="https://images0.cnblogs.com/blog/319578/201312/20135106-a1e5fd079a51484085065d3b29f2d331.png" alt="HBase.png" class="ui centered image"></a></p>
+<h4 id="HBase&#x67B6;&#x6784;&#x56FE;"><a href="#HBase&#x67B6;&#x6784;&#x56FE;" class="headerlink" title="HBase&#x67B6;&#x6784;&#x56FE;"></a>HBase&#x67B6;&#x6784;&#x56FE;</h4><p><a class="magnific-img" href="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fxlk7vxc1yj30l40azqdq.jpg"><img src="http://wx4.sinaimg.cn/mw690/006pTdaLgy1fxlk7vxc1yj30l40azqdq.jpg" alt="HBase.png" class="ui centered image"></a></p>
 <h4 id="HBase&#x5B58;&#x50A8;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;"><a href="#HBase&#x5B58;&#x50A8;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;" class="headerlink" title="HBase&#x5B58;&#x50A8;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;"></a>HBase&#x5B58;&#x50A8;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;</h4><ul class="ui list">
 <li>&#x56E0;&#x4E3A;&#x5C0F;&#x6811;&#x5148;&#x5199;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5185;&#x5B58;&#x6570;&#x636E;&#x4E22;&#x5931;&#xFF0C;&#x5199;&#x5185;&#x5B58;&#x7684;&#x540C;&#x65F6;&#x9700;&#x8981;&#x6682;&#x65F6;&#x6301;&#x4E45;&#x5316;&#x5230;&#x78C1;&#x76D8;&#xFF0C;&#x5BF9;&#x5E94;&#x4E86;HBase&#x7684;MemStore&#x548C;HLog&#x3002;</li>
 <li>MemStore&#x4E0A;&#x7684;&#x6811;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x5927;&#x5C0F;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x8981;flush&#x5230;HRegion&#x78C1;&#x76D8;&#x4E2D;(&#x4E00;&#x822C;&#x662F;Hadoop DataNode),&#x8FD9;&#x6837;MemStore&#x5C31;&#x53D8;&#x6210;&#x4E86;DataNode&#x4E0A;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;StoreFile&#xFF0C;&#x5B9A;&#x671F;HRegionServer&#x5BF9;DataNode&#x7684;&#x6570;&#x636E;&#x505A;merge&#x64CD;&#x4F5C;&#xFF0C;&#x5F7B;&#x5E95;&#x5220;&#x9664;&#x65E0;&#x6548;&#x7A7A;&#x95F4;&#xFF0C;&#x591A;&#x4E2A;&#x5C0F;&#x6811;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x673A;&#x5408;&#x5E76;&#x6210;&#x5927;&#x6811;&#xFF0C;&#x6765;&#x589E;&#x5F3A;&#x8BFB;&#x6027;&#x80FD;&#x3002;</li>
@@ -257,7 +253,14 @@
             <div class="column nav-left">
                 
 
-                <a class="ui tiny button disabled"><i class="angle left icon"></i>前一篇</a>
+                <a href="/2018/11/26/JavaConcurrency/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    (No Title)
+                    
+
+                </a>
 
                 
             </div>
@@ -283,7 +286,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#三种基本存储引擎概述"><span>三种基本存储引擎概述</span></a></li><li><a href="#B-树-B-树也称为B树"><span>B(+)树  [B-树也称为B树]</span></a><ol><li><a href="#B-树"><span>B[-]树</span></a></li></ol></li><li><a href="#LSM树-日志结构合并树"><span>LSM树(日志结构合并树)</span></a><ol><li><a href="#一个LSM树"><span>一个LSM树</span></a></li><li><a href="#设计思想"><span>设计思想:</span></a></li><li><a href="#原理"><span>原理:</span></a></li><li><a href="#HBase架构图"><span>HBase架构图</span></a></li><li><a href="#HBase存储的设计思想"><span>HBase存储的设计思想</span></a></li></ol></li></ol>
+                    <ol class="ui ordered list"><li><a href="#1-三种基本存储引擎概述"><span>1. 三种基本存储引擎概述</span></a></li><li><a href="#2-B-树-B-树也称为B树"><span>2. B(+)树  [B-树也称为B树]</span></a><ol><li><a href="#B-树"><span>B[-]树</span></a></li></ol></li><li><a href="#3-LSM树-日志结构合并树"><span>3. LSM树(日志结构合并树)</span></a><ol><li><a href="#一个LSM树"><span>一个LSM树</span></a></li><li><a href="#设计思想"><span>设计思想:</span></a></li><li><a href="#原理"><span>原理:</span></a></li><li><a href="#HBase架构图"><span>HBase架构图</span></a></li><li><a href="#HBase存储的设计思想"><span>HBase存储的设计思想</span></a></li></ol></li></ol>
                 </div>
 
             </div>
